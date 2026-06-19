@@ -5,3 +5,11 @@ authors:
   - family-names: Von Braun-Bates
     given-names: Francesca
 license: CC-BY-4.0
+preferred-citation:
+  type: thesis
+  title: Cosmological Constraints from Type Ia Supernovae
+  authors:
+    - family-names: Von Braun-Bates
+      given-names: Francesca
+  year: 2010
+  institution: University of Sydney
