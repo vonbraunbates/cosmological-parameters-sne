@@ -2,7 +2,9 @@
 Cosmological parameter estimation using Type Ia SNe as standard candles
 
 Title: Bayesian inference of cosmological parameters from Type Ia supernovae
+
 Author: Dr. Francesca von Braun-Bates
+
 Date: see repository for last modified date
 
 Original honours thesis
