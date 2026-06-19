@@ -1,0 +1,615 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage{changes}
+\newcommand{\done}{\textcolor{green!60!black}{\ding{51}}}
+\newcommand{\pending}{$\square$}
+\newcommand{\wip}{\textcolor{orange}{$\triangleright$}}
+\newcommand{\wontdo}{\textcolor{red}{\ding{55}}}
+
+\usepackage{longtable}
+
+\title{Reconstruction Plan for Honours Thesis}
+
+\begin{document}
+
+\maketitle
+
+\section*{Goal}
+
+Reconstruct a complete and compilable \LaTeX{} source tree for the honours thesis from the
+final PDF. The objective is preservation and reproducibility rather than exact page-by-page
+reproduction.
+
+\section*{Success Criteria}
+
+\begin{description}
+\item[Gold:] Source compiles and reproduces all text, equations, figures, tables,
+citations and appendices.
+
+\item[Silver:] Scientific content is fully reproduced but formatting differs from
+the original PDF.
+
+\item[Bronze:] PDF preserved, structure documented, and partial source recovered.
+\end{description}
+
+Target level for this thesis: \textbf{Gold}.
+
+\section{\done Recreate Structure}
+
+Create a minimal compiling thesis skeleton based on the Table of Contents.
+
+\begin{verbatim}
+honours-thesis/
+|----- thesis.tex
+|----- chapters/
+|   |----- intro.tex
+|   |----- formulation.tex
+|   |----- data.tex
+|   |----- modelling.tex
+|   |----- results.tex
+|   |----- conclusions.tex
+|   |----- appendixA.tex
+|   |----- appendixB.tex
+|   |----- appendixC.tex
+|----- figures/
+|----- thesis.bib
+|----- thesis.cls
+\end{verbatim}
+
+\subsection{Status}
+\begin{itemize}
+\item[\done] Main file created
+\item[\done] Chapter files created
+\item[\done] Appendices created
+\item[\done] Add sections, subsections etc. to files
+\item[\done] PDF compiles with book class
+\item[\done] Find custom cls file
+\item[\done] PDF compiles with custom cls file
+\end{itemize}
+
+
+\section{\done Reconstruct Bibliography}
+
+Extract all bibliography entries from the PDF and recreate a valid BibTeX database.
+
+\subsection{Tasks}
+\begin{itemize}
+\item[\done] Create \texttt{thesis.bib}
+\item[\done] Add placeholder entries for all 69 references
+\item[\done] Add bib entries based on ADS searches
+\item[\done] Confirm unambiguous ADS/arXiv entries
+\item[\done] Confirm entries which need human verification
+\item[\done] Recover any missing entries manually
+\end{itemize}
+
+\subsection{Bibliography Recovery Status}
+
+\small
+
+\begin{longtable}{|r|p{8cm}|c|}
+\hline
+Ref & Citation & Status \\
+\hline
+\endhead
+\hline
+\endfoot
+1 & Albrecht et al. (2006), Report of the Dark Energy Task Force & \done \\
+2 & Amanullah et al. (2010), Union2 Compilation & \done \\
+3 & Barnes, Francis et al. (2009), Evolving Dark Energy & \done \\
+4 & Blandford (2010), New Worlds, New Horizons & \done \\
+5 & Blondin et al. (2008), Time Dilation in Type Ia SNe & \done \\
+6 & Brewer \& Francis (2009), Entropic Priors & \done \\
+7 & Carroll (2001), Cosmological Constant & \done \\
+8 & Carroll (2007), Lecture Notes on General Relativity & \done \\
+9 & Carroll, De Felice et al. (2005) & \done \\
+10 & Carroll \& Kaplinghat (2002) & \done \\
+11 & Christensen et al. (2001), Bayesian CMB Methods & \done \\
+12 & Copeland, Sami et al. (2006), Dynamics of Dark Energy & \done \\
+13 & de Putter \& Linder (2008) & \done \\
+14 & do Carmo (1976), Differential Geometry & \done \\
+15 & do Carmo (1992), Riemannian Geometry & \done \\
+16 & Dunkley et al. (2005), Fast and Reliable MCMC & \done \\
+17 & Dunkley et al. (2009), WMAP Five-Year Results & \done \\
+18 & Dunlop et al. (1996), 3.5 Gyr Galaxy at z=1.55 & \done \\
+19 & Efstathiou (2008), Limitations of Bayesian Evidence & \done \\
+20 & Einstein (1917), Cosmological Considerations & \done \\
+21 & Einstein (1918), Principle of General Relativity & \done \\
+22 & Eisenstein et al. (2005), BAO Detection & \done \\
+23 & Francis (2008), PhD Thesis & \done \\
+24 & Friedmann (1922), Curvature of Space & \done \\
+25 & Gregory (2005), Bayesian Logical Data Analysis & \done \\
+26 & Guy et al. (2005), SALT & \done \\
+27 & Guy et al. (2007), SALT2 & \done \\
+28 & Guy et al. (2010), SNLS 3-Year Sample & \done \\
+29 & Hamann \& Ferland (1993) & \done \\
+30 & Harrison (1993), Cosmology & \done \\
+31 & Hartle (2003), Gravity & \done \\
+32 & Hasinger et al. (2002) & \done \\
+33 & Hicken et al. (2009), Constitution Set & \done \\
+34 & Hobson, Efstathiou \& Lasenby (2006) & \done \\
+35 & Hogg (2000), Distance Measures in Cosmology & \done \\
+36 & Hogg et al. (2002), K Correction & \done \\
+37 & Ivers (2010), Mathematical Computing Notes & \done \\
+38 & Jha, Riess et al. (2007), MLCS2k2 & \done \\
+39 & Komatsu et al. (2010), WMAP Seven-Year Results & \done \\
+40 & Kowalski et al. (2008), Union Compilation & \done \\
+41 & Krauss (1997) & \done \\
+42 & Kwan, Francis et al. (2009) & \done \\
+43 & Lahav \& Liddle (2010), Cosmological Parameters & \done \\
+44 & Lampeitl et al. (2010) & \done \\
+45 & Leibundgut (2008), Supernovae and Cosmology & \done \\
+46 & Leibundgut (2009), Supernova Cosmology 2010 & \done \\
+47 & Lewis \& Bridle (2002), Cosmological Parameters from CMB & \done \\
+48 & Lidman (2010), Personal Communication & \done \\
+49 & Lidman (2010), Improving Type Ia SNe & \done \\
+50 & Linder (1988), Cosmological Tests & \done \\
+51 & Linder (1988), Light Propagation & \done \\
+52 & Linder (2009), Like vs Like & \done \\
+53 & Linder \& Scherrer (2008), Aetherizing Lambda & \done \\
+54 & Maeda et al. (2010), Asymmetric SN Explosions & \done \\
+55 & Mazzali et al. (2007), Common SN Ia Mechanism & \done \\
+56 & Olive (2010), Dark Energy and Dark Matter & \done \\
+57 & Percival et al. (2007), BAO Scale Measurement & \done \\
+58 & Rees (1998), Universe at z > 5 & \done \\
+59 & Reid (1998), Globular Clusters and Age of Galaxy & \done \\
+60 & Riess et al. (2009), Redetermination of Hubble Constant & \done \\
+61 & Riess et al. (2007), HST Type Ia Supernovae & \done \\
+62 & Riley, Hobson \& Bence (2002), Mathematical Methods & \done \\
+63 & Rubin, Linder et al. (2008) & \done \\
+64 & Sawicki \& Carroll (2005) & \done \\
+65 & Silk (1989), The Big Bang & \done \\
+66 & Spergel et al. (2007), WMAP Three-Year Results & \done \\
+67 & van Osten (2006), Dark Energy and Cosmic Horizons & \done \\
+68 & Wagner et al. (2008), BAO Constraints & \done \\
+69 & Weinberg (2009), Computing the Bayesian Factor & \done \\
+\hline
+\end{longtable}
+
+\todo{For the theses (van Osten and Barnes) I have tried searching the USyd thesis database but the recor is patchy.  They don't appear to be on arxiv either.}
+
+\section{\done Recover Figures}
+
+Before reconstructing text, create placeholders for every figure.
+
+\subsection{Tasks}
+\begin{itemize}
+\item[\done] Inventory all figures
+\item[\done] Create all figure environments and captions.
+\item[\done] Extract figures from PDF where necessary
+\item[\pending] Find original figure files from references if available
+\item[\pending] Reproduce figures from code if necessary
+\item[\done] Create figure labels
+\item[\done] Insert figures into environments
+\item[\done] Update captions
+\end{itemize}
+
+\subsection{Figure Recovery Status}
+
+\begin{longtable}{|l|p{4.5cm}|c|c|c|c|p{3cm}|}
+\hline
+Figure &
+Description &
+Cropped? &
+Inserted? &
+Rebuild? &
+Recovered? &
+Notes \\
+\hline
+\endhead
+
+1.1 & Stress-energy-momentum tensor, general and perfect fluid cases & \done & \done & \pending & \pending & \\
+1.2 & Supernova classes based on spectroscopy & \done & \done & \pending & \pending & Literature figure \\
+1.3 & Type Ia supernova formation diagram & \done & \done & \pending & \pending & Literature/web figure \\
+
+3.1 & Redshift-bin distribution for Gold, Union and Constitution samples & \done & \done & \pending & \pending & From Kwan et al. \\
+
+4.1 & Luminosity distance and distance modulus curves compared with Hogg & \done & \done & \pending & \pending &  Contains imported Hogg plots plus own plots \\
+4.2 & Example of proper MCMC maximum step size & \done & \done & \pending & \pending &  MATLAB-generated \\
+4.3 & Examples of improper MCMC maximum step sizes & \done & \done & \pending & \pending &  MATLAB-generated \\
+
+5.1 & One-dimensional posterior PDFs for parameters & \done & \done & \pending & \pending &  Also enlarged in Appendix A \\
+5.2 & Credible regions for $(\Omega_M,w_0)$ & \done & \done & \pending & \pending &  MATLAB-generated \\
+5.3 & Credible regions for $(\Omega_M,w_1)$ & \done & \done & \pending & \pending &  MATLAB-generated \\
+5.4 & Credible regions for $(\Omega_M,\gamma)$ & \done & \done & \pending & \pending &  MATLAB-generated \\
+5.5 & Credible regions for $(w_0,w_1)$ & \done & \done & \pending & \pending &  Includes CMB wall \\
+5.6 & Credible regions for $(w_0,\gamma)$ & \done & \done & \pending & \pending &  MATLAB-generated \\
+5.7 & Credible regions for $(w_1,\gamma)$ & \done & \done & \pending & \pending &  MATLAB-generated \\
+5.8 & Union and Gold credible-region comparison & \done & \done & \pending & \pending &  Literature figure, recoloured \\
+5.9 & Confidence limits on $w(z)$ & \done & \done & \pending & \pending &  Literature figure \\
+5.10 & Constraints on $(w_0,w_a)$ from SN, CMB and BAO & \done & \done & \pending & \pending &  Literature figure \\
+5.11 & SALT vs MLCS2k2 comparison & \done & \done & \pending & \pending &  Literature figure \\
+
+A.1a & Enlarged posterior for $h/h_{72}$ & \done & \done & \pending & \pending &  Appendix A \\
+A.1b & Enlarged posterior for $\Omega_M$ & \done & \done & \pending & \pending &  Appendix A \\
+A.1c & Enlarged posterior for $w_0$ & \done & \done & \pending & \pending &  Appendix A \\
+A.1d & Enlarged posterior for $w_1$ & \done & \done & \pending & \pending &  Appendix A \\
+A.1e & Enlarged posterior for $\gamma$ & \done & \done & \pending & \pending &  Appendix A \\
+
+B.1a-d & Distance-modulus curve plots for Constitution set & \done & \done & \pending & \pending &  Four panels \\
+B.2a-d & Distance-modulus curve plots for Constitution 0.2x set & \done & \done & \pending & \pending &  Four panels \\
+B.3a-d & Distance-modulus curve plots for Gold set & \done & \done & \pending & \pending &  Four panels \\
+B.4a-d & Distance-modulus curve plots for Gold 0.2x set & \done & \done & \pending & \pending &  Four panels \\
+B.5a-d & Distance-modulus curve plots for Union set & \done & \done & \pending & \pending &  Four panels \\
+B.6a-d & Distance-modulus curve plots for Union 0.2x set & \done & \done & \pending & \pending &  Four panels \\
+B.7a-d & Distance-modulus curve plots for SNAP set & \done & \done & \pending & \pending &  Four panels \\
+B.8a-d & Distance-modulus curve plots for SNAP 0.2x set & \done & \done & \pending & \pending &  Four panels \\
+
+C.1 & Sample Type Ia supernova light curves & \done & \done & \pending & \pending &  Literature/slide figure \\
+C.2 & SALT and MLCS2k2 credible-region comparison & \done & \done & \pending & \pending &  Literature figure \\
+C.3 & SN brightness vs host-galaxy star formation rate & \done & \done & \pending & \pending &  Slide figure \\
+C.4 & SN brightness vs host-galaxy metallicity & \done  & \done & \pending & \pending &  Slide figure \\
+C.5 & Peak absolute magnitude deviation by observing wavelength & \done & \done & \pending & \pending &  Slide figure \\
+
+\hline
+\end{longtable}
+
+Captions match the ones in the thesis.
+I have added captions to appendices A and B.
+
+\section{\done Recover tables}
+
+\begin{longtable}{|p{1.6cm} | p{5.5cm} c c c p{3cm}|}
+\hline
+Table &
+Description &
+Environment? &
+Caption/Label? &
+Inserted? &
+Notes \\
+\hline
+\endhead
+\hline
+\endfoot
+
+Table 4.1 &
+Programs written for the project &
+\done & \done & \done & \\
+
+Table 5.1 &
+Best-fit parameters for single-parameter models &
+\done & \done & \done & \\
+
+Table 5.2 &
+Comparison with original survey results &
+\done & \done & \done &  \\
+
+Table 5.3 &
+One-parameter deviations from $\Lambda$CDM &
+\done & \done & \done & Corrected from original
+\end{longtable}
+
+\section{\done Recover Equations}
+
+Reconstruct all displayed equations and numbering.
+
+\subsection{Tasks}
+\begin{itemize}
+\item[\done] Add correct packages
+\item[\done] Add placeholders for displayed equations
+\item[\done] Insert displayed equations
+\item[\done] All formulae compile
+\end{itemize}
+
+\subsection{Equation Recovery Status}
+
+\begin{longtable}{|p{1.8cm}|p{6.2cm}|p{2.2cm}|p{2.2cm}|p{2.5cm}|}
+\hline
+Equation & Description & Recovered? & Label Added? & Notes \\
+\hline
+\endfirsthead
+
+\hline
+Equation & Description & Recovered? & Label Added? & Notes \\
+\hline
+\endhead
+
+(1.1) & Einstein field equation & \done & \done & \\
+(1.2) & Maximally symmetric spacetime interval & \done & \done & \\
+(1.3a) & Robertson form of FLRW metric  & \done & \done & \\
+(1.3b) & Walker form of FLRW metric  & \done & \done & \\
+(1.4a) & Friedmann acceleration equation  & \done & \done & \\
+(1.4b) & Energy conservation equation  & \done & \done & \\
+(1.4c) & Friedmann constraint equation  & \done & \done & \\
+(1.5) & Einstein equation with cosmological constant  & \done & \done & \\
+(1.6) & Alternative Einstein equation with $\Lambda$ term  & \done & \done & \\
+(1.7) & Quintessence density equation & \done & \done & \\
+(1.8) & Quintessence pressure equation & \done & \done & \\
+(1.9) & Combined matter--dark-energy conservation equation & \done & \done & \\
+(1.10) & Interacting adiabatic equations & \done & \done & \\
+(1.11) & Cosmological redshift relation & \done & \done & \\
+(1.12) & Luminosity distance definition & \done & \done & \\
+(1.13) & Distance modulus definition & \done & \done & \\
+(1.14) & Practical distance modulus expression & \done & \done & \\
+(1.15) & Luminosity distance and comoving distance relation & \done & \done & \\
+(1.16) & Comoving-distance integral expression & \done & \done & \\
+
+(2.1) & Bayesian product rule & \done & \done & \\
+(2.2) & Credible-region probability content & \done & \done & \\
+(2.3) & Global likelihood integral & \done & \done & \\
+(2.4) & Monte Carlo integral approximation & \done & \done & \\
+(2.5) & Change of variable from time to redshift & \done & \done & \\
+(2.6) & Cosmological density and critical density & \done & \done & \\
+(2.7a) & Scaled matter-density Friedmann equation & \done & \done & \\
+(2.7b) & Scaled dark-energy-density Friedmann equation & \done & \done & \\
+(2.7c) & Scaled Hubble equation & \done & \done & \\
+(2.8) & Luminosity-distance differential equation & \done & \done & \\
+
+(4.1) & Product likelihood and Gaussian individual likelihood & \done & \done & \\
+
+(5.1) & Limiting interacting Friedmann equations as $\gamma \to -1$ & \done & \done & \\
+
+(6.1) & Odds factor and Bayes factor relation & \done & \done & \\
+(6.2) & Global likelihood as integral over prior and likelihood & \done & \done & \\
+
+(C.1) & Practical SNe distance modulus relation & \done & \done & \\
+(C.2) & SALT light-curve fitter distance modulus relation & \done & \done & \\
+
+\hline
+\end{longtable}
+
+\section{\done Recover Text}
+
+Populate chapter files from PDF extraction.
+
+\begin{longtable}{|p{2.2cm}|p{6.5cm}|p{2.2cm}|p{2.2cm}|p{2.5cm}|}
+\hline
+Section & Title & Text Added? & Reviewed? & Notes \\
+\hline
+\endfirsthead
+
+\hline
+Section & Title & Text Added? & Reviewed? & Notes \\
+\hline
+\endhead
+
+Abstract & Abstract & \done & \done & \\
+
+1 & Introduction & \done & \done & \\
+1.1 & Cosmological background & \done & \done & \\
+1.2 & General Relativity & \done & \done & \\
+1.3 & Dark energy & \done & \done & \\
+1.3.1 & The cosmological constant & \done & \done & \\
+1.3.2 & Quintessence models & \done & \done & \\
+1.3.3 & Barotropic fluids & \done & \done & \\
+1.3.4 & Possible interaction & \done & \done & \\
+1.4 & Observations & \done & \done & \\
+1.4.1 & Redshift-distance relations & \done & \done & \\
+1.4.2 & Supernovae as standard candles & \done & \done & \\
+1.4.3 & Relation of observables to parameters & \done & \done & \\
+1.5 & Thesis overview & \done & \done & \\
+
+2 & Formulation of the Problem & \done & \done & \\
+2.1 & Bayesian inference & \done & \done & \\
+2.2 & Determination of model likelihood & \done & \done & \\
+2.3 & Markov Chain Monte Carlo methods & \done & \done & \\
+2.4 & Reformulation of the Friedmann equations & \done & \done & \\
+
+3 & Data  & \done & \done & \\
+3.1 & Observational data  & \done & \done & \\
+3.2 & Artificially generated data  & \done & \done & \\
+
+4 & Numerical Modelling  & \done & \done & \\
+4.1 & Codes written for the project  & \done & \done & \\
+4.1.1 & Numerical solution of the Friedmann equations  & \done & \done & \\
+4.1.2 & Likelihood calculations  & \done & \done & \\
+4.1.3 & The Metropolis-Hastings algorithm  & \done & \done & \\
+4.2 & Generation of the projected WFIRST set  & \done & \done & \\
+4.3 & Simulation of the posterior distributions  & \done & \done & \\
+4.4 & Credible regions from posteriors  & \done & \done & \\
+4.4.1 & Credible regions for individual parameters  & \done & \done & \\
+4.4.2 & Credible regions for multiple parameters  & \done & \done & \\
+
+5 & Results  & \done & \done & \\
+5.1 & Parameter values from 1-dimensional models  & \done & \done & \\
+5.2 & Degeneracies between parameters from 2-dimensional models & \done & \done & \\
+5.3 & Improving constraints: combination with CMB and BAO data & \done & \done & \\
+5.4 & Implications & \done & \done & \\
+
+6 & Conclusions & \done & \done & \\
+6.1 & Further Work  & \done & \done & \\
+6.2 & Summary  & \done & \done & \\
+
+A & Large figures from results  & \done & \done & \\
+B & Comparison of distance modulus curves to data  & \done & \done & \\
+C & Are Type Ia SNe standard candles?  & \done & \done & \\
+C.1 & Supernova photometry  & \done & \done & \\
+C.2 & The SALT Fitter  & \done & \done & \\
+C.3 & The MLCS2k2 Fitter & \done & \done & \\
+C.4 & Are the fitting parameters universal?  & \done & \done & \\
+C.5 & Future developments  & \done & \done & \\
+
+\hline
+\end{longtable}
+
+\section{\done Cross References}
+
+\subsection{Tasks}
+
+For the references within the paper:
+
+\begin{itemize}
+\item[\pending] Add packages
+\item[\pending] Add labels to chapters and sections.
+\item[\pending] Add labels to equations.
+\item[\pending] Add labels to figures and tables.
+\item[\pending] Add labels to appendices.
+\item[\pending] Convert textual references to \texttt{\textbackslash cref} commands.
+\item[\pending] Verify all references resolve correctly.
+\end{itemize}
+
+For the references to external resources:
+\begin{itemize}
+\item[\pending] Compile and fix missing citation keys
+\item[\pending] Only then polish style
+\item[\pending] Compile bibliography successfully
+\item[\pending] Find any hyperlinks e.g. URLs in the text, fottnotes and check they work.
+\end{itemize}
+
+
+\subsection*{Cross-Reference Recovery Strategy}
+
+The goal is to recover all internal references in a maintainable manner while avoiding
+hard-coded numbering. The recommended approach is to reconstruct labels first and
+convert textual references later.
+
+\subsubsection*{Packages}
+
+Load the packages in the following order:
+
+\begin{verbatim}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\end{verbatim}
+
+The \texttt{cleveref} package must be loaded after \texttt{hyperref}.
+
+
+\subsubsection*{Label Naming Conventions}
+
+Use semantic labels rather than labels based on numbering.
+
+Preferred examples:
+
+\begin{verbatim}
+\label{ch:introduction}
+\label{sec:general-relativity}
+\label{sec:mcmc}
+
+\label{eq:einstein-field}
+\label{eq:friedmann-acceleration}
+
+\label{fig:stress-energy-tensor}
+\label{fig:sn-classification}
+
+\label{tab:parameter-estimates}
+\end{verbatim}
+
+Avoid:
+
+\begin{verbatim}
+\label{eq:1.4a}
+\label{fig:5.4}
+\label{sec:2.3}
+\end{verbatim}
+
+These become difficult to maintain if numbering changes.
+
+\subsubsection*{Chapter and Section Labels}
+
+Add labels immediately after chapter and section declarations.
+
+\begin{verbatim}
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{General Relativity}
+\label{sec:general-relativity}
+\end{verbatim}
+
+\subsubsection*{Equation Labels}
+
+Add labels inside equation environments.
+
+\begin{verbatim}
+\begin{equation}
+R_{\mu\nu} - \frac12 g_{\mu\nu}R
+=
+\frac{8\pi G}{c^4}T_{\mu\nu}
+\label{eq:einstein-field}
+\end{equation}
+\end{verbatim}
+
+\subsubsection*{Figure Labels}
+
+Always place figure labels after captions.
+
+\begin{verbatim}
+\begin{figure}
+\centering
+\includegraphics{figures/sn-classes}
+\caption{Type Ia supernova classification.}
+\label{fig:sn-classification}
+\end{figure}
+\end{verbatim}
+
+\subsubsection*{Temporary Placeholders}
+
+When reconstructing text, unresolved references should be marked explicitly.
+
+Examples:
+
+\begin{verbatim}
+[REF: original Fig. 5.4]
+[REF: original Eq. (2.7)]
+[REF: original Sec. 4.3]
+\end{verbatim}
+
+These placeholders are easy to search for later.
+
+\subsection{Verification Checklist}
+
+\begin{longtable}{|p{8cm}|c|}
+\hline
+Task & Status \\
+\hline
+\endfirsthead
+
+\hline
+Task & Status \\
+\hline
+\endhead
+
+Load hyperref and cleveref packages & \pending \\
+Create chapter labels & \pending \\
+Create section labels & \pending \\
+Create equation labels & \pending \\
+Create figure labels & \pending \\
+Create table labels & \pending \\
+Create appendix labels & \pending \\
+Replace hard-coded equation references & \pending \\
+Replace hard-coded figure references & \pending \\
+Replace hard-coded section references & \pending \\
+Replace hard-coded appendix references & \pending \\
+Resolve all undefined references & \pending \\
+Verify hyperlinks function correctly & \pending \\
+\hline
+\end{longtable}
+
+\section{Verification}
+
+Compare reconstructed thesis against original PDF.
+
+\subsection{Checks}
+
+\begin{itemize}
+\item[\pending] All chapters present
+\item[\pending] All equations present
+\item[\pending] All figures present
+\item[\pending] All tables present
+\item[\pending] Bibliography complete
+\item[\pending] No unresolved references
+\item[\pending] PDF compiles cleanly
+\end{itemize}
+
+\section*{Repository Structure}
+
+Recommended final archival structure:
+
+\begin{verbatim}
+honours-thesis/
+|----- source/
+|----- figures/
+|----- bibliography/
+|----- thesis.pdf
+|----- README.md
+|----- LICENSE
+|----- reconstruction-log.tex
+\end{verbatim}
+
+
+\end{document}
