@@ -1,0 +1,39 @@
+\section{Codes written for the project}
+\label{sec:codes-written}
+
+The codes required for the project varied widely in complexity (and consequently in debugging time). I wrote the codes starting with the clearest structure, then optimising them for speed. Two modifications caused the greatest increase in efficiency: firstly the replacement of for-loops with array operations; secondly minimising the memory used when writing data to files. Despite these measures, generating the Markov chains remained demanding in terms of computer time and hardware (\cref{sec:4.1.3}).
+
+\subsection{Numerical solution of the Friedmann equations}
+\label{sec:4.1.1}
+
+The function designed to calculate $\mu(z)$ by solving the scaled Friedmann equations \cref{eq:2.7} was \texttt{friedmann}. The function calculated the initial conditions for the ODEs and passed them to the inbuilt \matlab{} ODE solver \texttt{ode45} along with the right hand side of the equations which were contained in the subfunction \texttt{friedmann\_rhs}. The output from the ODE solver was a 4 column array $\left[ \Omega_m (z_i), \Omega_X (z_i), H(z_i), D_L(z_i)\right]$, from which $D_L(z_i)$ was extracted to find $\mu(z_i)$ according to \cref{eq:1.13}.
+
+The output of \texttt{friedmann} was the 2-column array of distance modulus versus redshift $[z_i \,, \mu(z_i)]$. Plotting this generated a redshift-distance modulus curve. I compared my own results \cref{fig:fig4.1b} and \cref{fig:fig4.1d} to those \cref{fig:fig4.1a} and \cref{fig:fig4.1c} published by Hogg in \cite{Hogg2000} to ensure that \texttt{friedmann} produced correct $d_L(z)$ and $\mu(z)$ values. Due to the assumption of a flat spatial geometry (with $\Omega_m + \Omega_X = 1$) I could not produce the curve for $(\Omega_m = 0.05, \, \Omega_X = 0)$. Therefore I was able to verify that the script both correctly solved the Friedmann equations and correctly converted from the distance-redshift relation to the observed quantity given in the data.
+
+\subsection{Likelihood calculations}
+\label{sec:4.1.2}
+
+The random walk requires the calculation of the likelihood $L(x)$ at each selected point $x$ in the parameter space. The point with the largest likelihood corresponds to the set of parameter values which are most likely to have generated the $\mu(z)$ curve formed from the data.   The analytical value \cref{eq:4.1} for $L(x)$ is the product of the likelihood according to each point $\mu(z_j)$ in the data. Since the error in $\mu$ is well-characterised by a Gaussian distribution, the individual likelihoods are \cref{eq:4.1} where at the redshift $z_j$ , $\sigma$ is the standard deviation of the uncertainty in the distance modulus measurement $\mu(z_j)$ (this was provided explicitly in the data) and $\mu(x)$ is the distance modulus calculated by the model with parameter 5-tuple $x$. The individual likelihood is maximised for the curve which, at each $z_j$ in the chosen SNe data set, matches as closely to the distance modulus $\mu_j$ of the SN there, i.e. when $\mu(x) - \mu(z_j) = 0$.
+
+% Equation (4.1)
+\begin{equation}
+    \mathcal{L}(x)
+    = \prod_{j} \mathcal{L}_{j}(x)
+    \quad
+    \text{where}
+    \quad
+    \mathcal{L}_{j}(x)
+    = \mathcal{L} \left( \mu{} ( z_{j};x ) \right)
+    = \frac{1}{\sqrt{2\pi{}\sigma{}}} \exp 
+    \left( 
+        - \frac{\left( \mu{} (x) - \mu{} (z_{j}) \right)^{2]}}{2 \sigma{}^{2} }
+    \right)
+\label{eq:4.1}
+\end{equation}
+
+Since the global likelihood is the product of Gaussians, computational accuracy is maximised by calculating the logarithms of the individual values to avoid overflow. To perform global likelihood calculations for each set of parameter values I wrote a subfunction called likelihood rather than using a pre-written \matlab{} routine. The scalar output from likelihood was passed to the main program which used this and the previous value to determine the next model to pick in parameter space as described in \cref{alg:2.1}.
+
+\subsection{The Metropolis-Hastings algorithm}
+\label{sec:4.1.3}
+
+The Metropolis-Hastings algorithm (\cref{alg:2.1}) is a random walk which produces Markov chains that accept or reject a proposed step on the basis of the likelihood ratio between the steps. The main program \texttt{montecarlo} looped over each maximum step size, performing the Metropolis-Hastings algorithm for a given walk length, writing the parameter values and likelihood to file at each step, before creating a histogram and a line graph for each of the varying parameters in the walk. The algorithm contains three computationally important factors: the number of steps in the walk, the dimensionality of the parameter space and the size of the neighbourhood around each point. As discussed in \cref{sec:4.3}, although writing the code is straightforward, ensuring that it truly approximates the posteriors from the longer crude Monte Carlo method is not so simple.

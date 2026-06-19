@@ -1,0 +1,32 @@
+% chapters/results.tex
+\chapter{Results}
+\label{ch:results}
+
+% ---------- Chapter 5: Results ----------
+
+\input{tables/table_5.1_bestfit_parameter}
+
+\input{tables/table_5.2_parameter_comparison}
+
+\input{tables/table_5.3_lcdm}
+
+The project produces four different outputs for each data set: the Markov chains used to produce the posterior PDFs, the posteriors themselves, credible regions for the $\binom{4}{1}$ parameters and $\binom{4}{2}$ pairs thereof and the distance modulus curves for those parameter values which have the greatest likelihood. Of these, the latter two are useful for analysis. It is also desirable to compare the results from this project to those obtained by the supernova search teams themselves and by alternative methods of parameter estimation, namely anisotropies in the cosmic microwave background and baryon acoustic oscillations in elliptical galaxies. For one of the models to be a viable alternative we require that the best-fit values from all of the observational data sets agree, i.e. they all lie within the others’ 68\% credible regions. This is due to the lack of tension between the three Ia SNe sets asserted by \cite{Kwan2009}: if the data from all observations are consistent, then those parameters which have a high probability of producing one set’s distance moduli must also have a high probability of producing the others. Conversely, if the credible regions from the three observational sets do not overlap in a certain subspace, then we may discard the subset of models which span that subspace. This is a qualitative measure which may be quantitatively expressed by calculating the Bayes factors from the posteriors, using a technique described in the further work (\cref{sec:6.1}). 
+
+Firstly we examine the credible regions from the single-parameter models in \cref{sec:5.1}. (For brevity I omit similar analysis for the individual parameters in two-parameter models.) I then examine the possibility of correla- tions between parameters shown in the two-parameter models in \cref{sec:5.2}. In \cref{sec:5.3} I add \bao{} results from the Sloan Digital Sky Survey and \cmb{} results from the seven-year Wilkinson Microwave Anisotropy Probe to the 2d credible regions in order to obtain tighter constraints on the cosmological parameters. Lastly in \cref{sec:5.4} I examine the astrophysical and cosmological implications of a non-$\Lambda$CDM universe.
+
+\input{chapters/section5.1}
+
+\input{chapters/section5.2}
+
+\input{chapters/section5.3}
+
+\section{Implications}
+\label{sec:5.4}
+
+Finding well-constrained estimates for the cosmological parameters is only one vital part of cosmology. Once the parameter values are established, one faces the task of developing physical theories which explain the parameter values. 
+
+A particularly active field for cosmologists, quantum field theorists and particle physicists is the development of new models for dark energy, which can then be tested against the observational constraints \cite{LinderScherrer2009,Copeland2006}. The parameter values determine the density and expansion of the universe at the time of early structure formation \cite{Rees1998,Riess2009}, which will aid in developing models for the earliest astronomical objects, e.g. supermassive black holes and quasars (which may be the same thing) \cite{Rees1998}. 
+
+In turn. this will shed light on early galaxy formation and may help solve the continuing problem of finding high-redshift objects with an age which is apparently greater than that of the Universe \cite{Krauss1997,Dunlop1996}.  Of particular concern is the need for astronomical studies to ensure that the criteria they use to judge formation models (e.g. globular cluster formation) are not cosmological-model-dependant. For example, the age of the Universe depends on the cosmological parameters (see the discussion in \cref{sec:2.4}), so this cannot be used to limit the age of early-forming objects such as globular clusters. Conversely, tight constraints on the age of the Universe (13.7 ± 0.2 Gyr for the $\Lambda$CDM model \cite{Barnes2005}) would provide an upper bound on the age of old, high-redshift objects (e.g. quasars \cite{Hasinger2002}, globular clusters \cite{Reid1998}, luminous elliptical galaxies \cite{Dunlop1996}), which would then act as a criterion for eliminating certain formation models for these objects which predicted an age older than the Universe \cite{Dunlop1996}. Beyond astronomy, the equation of state for dark energy will limit the possible physical methods by which the dark energy is generated. This impacts upon high energy physics theories which apply when the Universe is extremely young, such as supersymmetry and supergravity: see \cite{Copeland2006} for a review of this topic, which is beyond the scope of this project. Moreover, the cosmological parameter values predict the proportion of primordial light elements (H, D, He and Li) synthesized after the big bang \cite{Riess2009}, which acts as a test for dark energy represented by primordial quintessence fields \cite{Copeland2006}. The implications of a non-$\Lambda$CDM universe are present in diverse fields beyond cosmology.
+
+In conclusion, there are currently three plausible groups of models which offer one-parameter deviations from the $\Lambda$CDM model: one favouring the Gold estimates, one favouring the Constitution/Union estimates and a compromise version that is a reasonable fit (within 1$\sigma$) for all three. The multiple- parameter models (of which only two-parameter models were examined here) have too many degeneracies to easily discern a best-fit value with 68\% confidence limits for each of the parameters. This problem may be resolved by combining the credible regions from Ia SNe with those from other data and redshift-distance relations to estimate the cosmological parameters, notably the angular diameter distance and data from the \cmb{} or \bao{}. Until the light-curve fitters which are used to reduce Type Ia SNe to standard candles are improved, the parameter estimates from different data sets (or even the same data but using different light curves) will give different credible regions for the parameters. Until then it is difficult to determine which of the families of parameter values \cref{tab:5.3} is closest to the true values for the observable Universe. Consequently, I conclude that the $\Lambda$CDM model is a reasonable approximation to the correct values which is currently unchallenged by parameter estimates derived from Type Ia SNe.

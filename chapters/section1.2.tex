@@ -1,0 +1,62 @@
+\section{General Relativity}
+\label{sec:1.2}
+
+The Einstein equation which summarises general relativity \cite{Hartle2003} is a gravitational analogue of Maxwell’s equation for electromagnetism \cite{Hobson2006}. Both are second-order partial differential equations, one relating the components $\ten{A}_{\mu}$ of the electromagnetic potential to its source $\ten{j}_{\mu}$ the 4-current density and the other relating the components $\ten{g}_{\mu\nu}$ of the metric coefficients of spacetime to its source $\ten{T}_{\mu\nu}$ the stress- energy-momentum tensor.
+
+% Equation (1.1)
+\begin{equation}
+\ten{R}_{\mu\nu} - \frac{1}{2} \ten{g}_{\mu\nu} R = \frac{8\pi{}G}{c^4} \ten{T}_{\mu\nu}
+\label{eq:1.1}
+\end{equation}
+
+The left hand side describes the distortion of spacetime at a point on the manifold (an event): the metric $\ten{g}_{\mu\nu}$ is a choice of inner product on the manifold which is determined by its geometry \cite{doCarmo1992} while the Ricci tensor $\ten{R}_{\mu\nu}$ and scalar $R$ are single and double contractions respectively of the Riemann curvature tensor \cite{Hartle2003,Hobson2006}. The right hand side \cref{fig:1.1} describes the energy distribution at the event \cite{Hobson2006}.
+
+We may now introduce simplifications: the metric is diagonalised by application of the cosmological principle and the energy tensor by the nature of a cosmological fluid. We define the invariant interval $\dd{s}^2 = \ten{g}_{\mu\nu} \dd{x}^{\mu} \dd{x}^{\nu}$ as a spacetime distance $\dd{s}^2$ between two events which is independent of the choice  of co-ordinates $x^{\mu} = (x^0, x^1 , x^2 , x^3 )$.  The co-ordinate system enables a quantitative interpretation of the cosmological principle. Firstly, we require a definition of ”at each point in time” since in relativity, time is a quantity relative to an observer rather than an absolute. This concept is replaced by a parameter $t = \text{constant}$ which labels a series of non-intersecting spacelike three-surfaces \cite{Hobson2006}. We now have a universal time without ambiguity: ”a point in time” now means ”a particular three-surface,” so it is natural to take $x^0 = t$ in our co-ordinate chart. The remaining co-ordinates are needed to parametrise the slices of constant co-ordinate time. The requirements of homogeneity and isotropy define a maximally symmetric three-surface of the form \cite{Hobson2006}:
+% Equation (1.2)
+\begin{equation}
+\dd{s}^{2} = -c^{2} \dd{t}^{2} + S^{2}(t) \left[ g_{ij} \dd{x}^{i} \dd{x}^{j} \right]
+\label{eq:1.2}
+\end{equation}
+The appropriate invariant interval was first derived by Robertson \cref{eq:1.3a} followed by the more commonly-quoted form attributed to Walker \cref{eq:1.3b} \cite{vanOsten2006}:
+
+\begin{subequations}
+% Equation (1.3a)
+\begin{equation}
+    \dd{s}^{2} = -c^{2} \dd{t}^{2} + R^{2}(t) \left[ 
+        \dd{\chi}^{2} + 
+        \begin{Bmatrix}
+            \sin{}^{\!2} x \\
+            x^{2} \\
+            \sinh{}^{\!2} x
+        \end{Bmatrix} \dd{\Omega}^{2} 
+    \right]
+\label{eq:1.3a}
+\end{equation}
+
+% Equation (1.3b)
+\begin{equation}
+    \dd{s}^{2} = -c^{2} \dd{t}^{2} + R^{2}(t) \left[ 
+        \frac{\dd{r}^{2}}{1 - kr^{2}} + r^{2}\dd{\Omega}^{2} 
+    \right]
+    \quad\text{where } k = 
+    \begin{cases}
+    +1 \\ 0 \\ -1
+    \end{cases}
+\label{eq:1.3b}
+\end{equation}
+\end{subequations}
+
+where $\dd{\Omega}^2$ is the unit two-sphere differential \cite{doCarmo1976}, $R(t)$ is the scale factor (not the Riemann scalar; this is an unfortunate convention) and the choice of $k$ (or function of $\chi$) depends on the topology of the three-surfaces \cite{Friedmann1922}. We have three choices: $k = -1$ is open (topologically hyperbolic), $k = 0$ is flat (topologically planar) and $k = +1$ is closed (topologically spherical), but we make no assumptions about the shape of the 4-manifold in which the 3-spaces are embedded \cite{Friedmann1922,vanOsten2006}. 
+Secondly, we consider the stress-energy-momentum tensor $\ten{T}_{\mu\nu}$ . On the large scale the contents of the universe can be smeared out into an homogeneous and isotropic cosmological fluid. It must be a perfect fluid, lacking heat conduction and both bulk and shear viscosity \cite{Hobson2006}. Referring to the form of $\ten{T}_{\mu\nu}$ in \cref{fig:stress-energy-perfect} we see that this type of fluid is entirely characterised by its energy density $\rho = \ten{T}_{00}/c^2$ and energy pressure $p = \ten{T}_{ii}$. Since $\ten{T}_{\mu\nu}$ , $\ten{g}_{\mu\nu}$ and therefore $\ten{R}_{\mu\nu}$ are all now diagonal we need only the time-time and space- space components of the Einstein equation \cref{eq:1.1}. 
+A third equation is provided by local conservation of energy \cite{Linder1988a}. 
+Collectively this set of coupled ODEs is known as the Friedmann equations:
+% Equations (1.4a-c)
+\begin{subequations}
+\label{eq:1.4}
+\begin{align}
+    \label{eq:1.4a} \frac{\ddot{a}}{a} &= \frac{4\pi{}G}{3} \left( \rho{} + 3p \right) \\
+    \label{eq:1.4b} \dot{\rho{}} &= -3H(\rho{} + p) \\
+    \label{eq:1.4c} H^{2} &= \frac{8\pi{}G}{3} \rho{} - \frac{k}{R_{0}^{2}}
+\end{align}
+\end{subequations}
+The equations can then be optimised for numerical use (as detailed in \cref{sec:2.4}. Familiar parameters in \cref{eq:1.4} are the present day scale factor $R_0$, the gravitational constant $G$, time $t$, and the spatial curvature $k \in \{-1, 0, +1\}$. The energy pressure $p$, density $\rho$ and equation of state $w = p / \rho $ are discussed in the next section.

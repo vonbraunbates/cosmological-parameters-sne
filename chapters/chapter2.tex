@@ -1,0 +1,172 @@
+% chapters/formulation.tex
+\chapter{Formulation of the Problem}
+\label{ch:formulation}
+
+In this chapter I outline the (not original) derivations which I performed in order to show that an estimation of the cosmological parameters using Ia SNe data can be reduced to the problem of solving an integral equation. Firstly I introduce in \cref{sec:2.1} the technique of Bayesian inference and in \cref{sec:2.2} the notion of a qualitative measurement of the goodness of a model to given data. I then demonstrate the transformation of the problem into an integral equation and describe the method \cref{sec:2.3} used to solve it numerically and efficiently. Finally in \cref{sec:2.4} I address potential pitfalls of the numerical approach and reformulate the Friedmann equations to avoid them.
+
+\section{Bayesian inference}\footnote{This section largely follows \cite{Gregory2005} §3 unless other citations are made.}
+\label{sec:2.1}
+
+Bayesian inference is a form of statistics based upon the idea of probability theory as extended logic. It gives a quantitative assessment of the probability $\prob{H_i}[D, I]$ of each hypothesis $H_i$ from a set of possibilities ${H_i}$ in the light of some data $D$ and any prior information about the problem $I$. In the absence of data we have the prior probability $\prob{H_i}[I]$ that our hypothesis is true based only on the prior information $I$. When new data $D$ is collected, we can incorporate this into the prior probability to create the posterior probability $\prob{H}[D,I]$. 
+
+Conversely we can also define the likelihood that the data is produced by a choice of hypothesis after accounting for the prior information: $L(H_i) = \prob{D}[H_i,I]$ is the likelihood of $H_i$ reproducing the data. The prior information is incorporated into the model by assigning a prior with characteristic width. At its simplest, a flat prior, the characteristic width assigns limits on the values of the data. More complicated priors such as the Jeffreys prior assign larger (smaller) weights to the PDF in regions which are more (less) probable according to the information. The posterior probability is then calculated according to the product rule \cref{eq:2.1}:
+
+% Equation (2.1)
+\begin{equation}
+    \prob{H_{i},D}[I]
+    = \prob{H_{i}}[I] \prob{D}[H_{i},I]
+    = \prob{D}[I] \prob{H_{i}}[D,I]
+\label{eq:2.1}
+\end{equation}
+
+The prior information specifies a certain cosmological model M : a choice of which parameters to fix to their concordance values and which to vary over a specified range. The prior also assigns a weight to each parameter value. In this case (following \cite{LewisBridle2002}) I used a flat prior, which simply fixes the range. 
+The priors adopted for the Bayesian analysis were:
+\begin{itemize}
+\item $\Omega_m \in [0,1]$, following directly from the definition of the cosmological density parameter (\cref{eq:2.6}) and the requirement that the total cosmological density equals unity.
+
+\item $w_0 \in [-3,0]$, where the upper bound follows from the definition of the equation-of-state parameter (\cref{sec:1.3}). The lower bound was chosen empirically by plotting distance modulus curves $\mu(z)$ for progressively smaller values of $w_0$ until the resulting model no longer intersected the supernova data.
+
+\item $w_1 \in [-3,3]$, later expanded to $[-20,20]$, with the bounds determined using the same procedure as for $w_0$.
+
+\item $\gamma \in [-1,1]$, where $\gamma$ represents the fraction of dark energy transferred to matter at a given redshift. Negative values correspond to energy transfer from matter to dark energy.
+
+\item $\displaystyle \frac{h}{h_{72}} \in \left[\frac{50}{72},\frac{100}{72}\right]$, corresponding to the historically accepted bounds on the Hubble constant, $H_0 = 50$--$100\ \mathrm{km\,s^{-1}\,Mpc^{-1}}$ \cite{Silk1989}.
+\end{itemize}
+
+Once a model is selected, its parameter space $V_M$ is is a subspace of the 5-d hypothesis space $V$. Points in the hypothesis space are labelled by the value $x$ of the 5-tuple $(\Omega_m, w_0 , w_1, \gamma, h/h_{72})$ (which for simplicity I treat as a single variable in the following). 
+
+Define a probability distribution function (PDF) $\prob{x}[H_i]$ to be the prior probability density of $x$: the probability according to our prior information $I$ that the true value of $x$ lies in the range $[x, x + \dd{x}]$ is $\prob{x}[H_i] \dd{x}$ \cite{Gregory2005}. The probability density can be used to determine which parameter values most closely reproduce the $\mu(z)$ curves plotted from the observational data. The most probable values form a $C$-credible region $R$ satisfying \cref{eq:2.2}, e.g. a 95\% credible region is the ”posterior bubble” containing the x-values of highest posterior density such that the total probability content is 95\%. This is not the same as the frequentist confidence interval, which is the region that has a 95\% chance of containing the true parameter value.
+ 
+% Equation (2.2)
+\begin{equation}
+    C = \int_{R} \dd{x} \prob{x}[D,M]
+\label{eq:2.2}
+\end{equation}
+
+\section{Determination of model likelihood}
+\label{sec:2.2}
+
+We require a quantitative measurement of the closeness of a model’s results to given data. This is provided by the global likelihood of the model $L(M)$ which is the likelihood for each possible parameter value weighted by its PDF according to \cref{eq:2.3}.
+
+% Equation (2.3)
+\begin{equation}
+    \mathcal{L} (M) 
+    = \prob{D}[M]
+    = \int_{V_{M}} \dd{x} \prob{x}[M] \prob{D}[x,M]
+\label{eq:2.3}
+\end{equation}
+
+We have reduced the problem of finding the ”best” or ”most likely” model(s) to the solution of an integral. The next section \cref{sec:2.3} describes an efficient method for numerical solution of the integral.
+
+\section{Markov Chain Monte Carlo methods}
+\label{sec:2.3}
+
+The Markov Chain Monte Carlo (\mcmc{}) method is an efficient way of selecting probable values from within a large parameter space \cite{LewisBridle2002}. Monte Carlo methods are used to evaluate integrals in many dimensions and the use of a Markov chain to sample the integration points greatly increases the efficiency of the computation, as we are only interested in those regions of the parameter space where the likelihood is relatively large \cite{Gregory2005}. The basic procedure for evaluating an integral \cref{eq:2.4} with no closed-form solution is to regard $I$ as the area under the curve $f(x)$ between the limits $x = a$ and $x = b$, then to attempt an estimation of that area \cite{Riley2002}.\footnote{The use of ”curve” and ”area” ignores the dimension of the problem. The methods remain the same for integrals of single or multiple variables. \cite{Riley2002}} Without loss of generality, the integral can be normalised by a change of variable $f(x) = F(\xi{})$ so that the integration limits are $\xi{} = 0$ and $\xi{} = 1$ \cite{Riley2002}.
+
+Random-number-based methods then involve estimating a quantity whose expectation value is equal to the desired quantity $I$ and differ only in the efficiency (the amount of computation required) and the uncertainty in the answer (the variance of the estimate). Crude Monte Carlo selects $N$ random numbers $0 < \xi{}_i < 1$ and evaluates the integrand $F$ at each point. The estimate is then:
+
+% Equation (2.4)
+\begin{equation}
+    I
+    = \int_{a}^{b} \dd{x} f(x)
+    = \int_{0}^{1} \dd{\xi} F(\xi)
+    \approx{} \frac{1}{N} \sum_{i=1}^{N} F \left( \xi{}_{i} \right)
+    \text{ for sufficiently large }N
+\label{eq:2.4}
+\end{equation}
+
+The inefficiency of this method makes it impractical for higher-dimensional problems \cite{Riley2002} because it spends too much time in areas where $F(\xi{})$ is small (which therefore don’t contribute much to the sum). The efficiency can be greatly improved by selecting $\xi{}_{i+1}$ based on the value of $\xi{}_i$, creating a random walk to regions where the integrand is large \cite{Gregory2005}. The algorithm which performs this called the Metropolis- Hastings algorithm  (see \cref{alg:2.1}). This method steps through parameter space towards the largest value of $F(\xi{})$ --- corresponding to the most likely value of $x$ --- allowing the step to move away from local maxima using step (1b) and accounting for efficiency by taking large steps in the directions in which $n$ is close to 1 and fine detail by taking small steps when $n$ is close to zero. If the size of the neighbourhood is chosen sufficiently well and $N$ is sufficiently large, the Metropolis-Hastings algorithm provides and accurate and efficient method for finding regions of the parameter space where the likelihood is large.
+
+\begin{algorithm}
+\caption{Random walk algorithm}
+\label{alg:2.1}
+
+\begin{enumerate}
+    \item Pick a starting point $\xi_0$.
+
+    \item For $i < N$:
+    \begin{enumerate}
+        \item Pick a trial point $\xi_{i+1}$ in the neighbourhood of $\xi_i$.
+        \item If $F(\xi_{i+1}) > F(\xi_i)$, accept the step.
+        \item Otherwise, choose $n \sim U(0,1)$. If
+        \[
+            \frac{F(\xi_{i+1})}{F(\xi_i)} > n,
+        \]
+        accept the step; otherwise set $\xi_{i+1}=\xi_i$.
+    \end{enumerate}
+
+    \item Stop when $i=N$.
+\end{enumerate}
+
+\end{algorithm}
+
+\section{Reformulation of the Friedmann equations}
+\label{sec:2.4}
+
+Reformulation of the Friedmann equations \cref{eq:1.4} is necessary to make them suitable for numerical use. The first step is to change the independent parameter from time t to redshift z via \cref{eq:2.5}:
+
+% Equation (2.5)
+\begin{equation}
+    \dd{t} = \frac{-\dd{z}}{(1+z) H(z)}
+\label{eq:2.5}
+\end{equation}
+
+The changes are made because $t$, unlike $z$, is not independent of the choice of cosmological model. The most obvious demonstration of this is the age of the universe. The Hubble time $t_H = c/D_H$ is defined to be the age of a universe with constant Hubble parameter. A universe with accelerating expansion will have an age less than $t_H$ whereas one with decelerating expansion will have an age greater than $t_H$. In contrast, $z \rightarrow{} \infty{}$ as $t \rightarrow{} 0$ and $z = 0$ at the present\footnote{This definition of $z(t)$ is clearly undefined for $z=-1$, which is problematic if further work attempts to extrapolate the models into the future.} regardless of the age of the universe. 
+
+The next step aims to minimise numerical errors, namely overflow, underflow and catastrophic cancellation. These problems arise from the limitations in storing real numbers on a computer which limits them to a fixed number of significant figures \cite{Ivers2010}. The numbers representable in \matlab{} are bounded by the double-precision, floating-point over-and underflow levels: if a real number has magnitude larger than the overflow level, or smaller than the underflow level, then there is insufficient space in memory to accurately store it \cite{Ivers2010}. Catastrophic cancellation is a loss in accuracy due to the subtraction of nearly equal numbers (e.g. $1.01 - 1.00 = 0.01$ results in a 1 sig. fig. answer although we started with 3 sig. figs.). These three problems are especially pernicious because their errors propagate throughout the calculations. The solution is to employ scaling, which involves dividing very large or small numbers by a characteristic quantity in order to maximise the available significant figures \cite{Ivers2010}. Firstly the units are geometrized: $c = G = 1$. We introduce the critical density \cref{eq:2.6} $\rhoc{}$ defined to be the total energy density of a universe with constant scale factor \cite{Hartle2003,Hobson2006}.  Dividing the energy densities $\rho_i$ by the critical density gives the cosmological density $\Omega_i$ \cite{Hobson2006,Olive2010}. 
+
+% Equation (2.6)
+\begin{equation}
+    \Omega_{i}(z)
+    \equiv{} \frac{\rho_{i}}{\rhoc{}}
+    \;\text{where}\;
+    \rhoc{}(z) = \frac{3H^{2}(z)}{8\pi{}G} 
+\label{eq:2.6}
+\end{equation}
+
+Assuming a flat universe with $H_0 = 70 \,\mathrm{km}\,s^{-1}\,\mathrm{Mpc}^{-1}$ gives a present-day critical density of $\rhoc{}_{,0} \approx{} 9.2 \times 10^{-27} \,\mathrm{kg}\,\mathrm{m}^{-3}$ or $\sim 5.5$ protons per $\mathrm{m}^3$ \cite{Hartle2003}.  The present day scale factor $a_0$ disappears from the equations during the change of independent variable. We have now removed all terms of large and small magnitude from the equations. 
+
+Finally, we look for reasonable assumptions to simplify the model. 
+We seek to choose a value for the spatial curvature and a parameterisation for the cosmological dark energy density $\Omega_X (z)$. 
+The former can be set to $k = 0$ based upon 7-year results \cite{Komatsu2010} from the Wilkinson Microwave Anisotropy Probe (WMAP), which combined their cosmic microwave background data with baryon acoustic oscillations and a fixed Hubble constant to obtain spatial curvature of $k = 0.0111^{+0.0060}_{-0.0063}$ with a 68\% confidence level. 
+The latter is a balance between minimising the size of the parameter space and maximising the potential accuracy of the results. Most studies (\cite{Riess2007,LewisBridle2002,Kowalski2008,Komatsu2010}) assume a constant value for the equation of state, however some (\cite{Hicken2009,Barnes2005}) examined a time-varying model. Although these were unable to constrain a non-constant equation of state using current-generation data, \cite{Barnes2005} asserts that next-generation observational probes (e.g. the Joint Dark Energy Mission and the Planck satellite) will have sufficiently high-$z$ data to do so. 
+In addition, it is easily seen in \cite{Linder1988a} that the Friedmann equations produce $\mu(z)$ curves which visibly diverge at $z \sim 2$. Consequently I decided to use the \lq\lq{}new z linear parameterisation\rq\rq{} $w_X (z) = w_0 + w_1 \frac{z}{1+z}$ \cite{Barnes2005,Komatsu2010} because it is first-order (and therefore shows the largest perturbations from a constant) and does not diverge at high z (unlike the first-order Maclaurin series approximation $w_X (z) = w_0 + w_1 z$). The assumptions of a flat universe and linear dark energy equation of state reduce the number of terms in the equations but do not introduce over-simplifications which would invalidate the model. 
+
+The scaled, simplified Friedmann equations are now:
+
+% Equations (2.7a-c)
+\begin{subequations}
+\label{eq:2.7}
+\begin{align}
+    \frac{\dd{\Omega_{m}}}{\dd{z}}
+    &= \frac{1}{1+z} \left(
+        3 \Omega_{m} - \frac{\gamma{}}{H(z)}
+    \right)
+\label{eq:2.7a} \\
+    \frac{\dd{\Omega_{X}}}{\dd{z}}
+    &= \frac{1}{1+z} \left(
+        3 \Omega_{X} \left( 1 + w_{0} + w_{1} \frac{z}{1+z} \right)
+        + \frac{\gamma{}}{H(z)}
+    \right)
+\label{eq:2.7b} \\
+    H^{2}(z)
+    &= \frac{8\pi{}}{3} \left( \Omega_{m} + \Omega_{X} \right)
+\label{eq:2.7c}
+\end{align}
+\end{subequations}
+
+The luminosity distance can also be represented as a differential equation. In geometerised units \cref{eq:1.15} simplifies to \cref{eq:2.8}:
+
+% Equation (2.8)
+\begin{equation}
+    D_{L} (z)
+    = \int_{0}^{z} \frac{\dd{z}\prime{}}{H\left( z^{\prime{}} \right)}
+    % \quad
+    \iff
+    % \quad
+    \frac{\dd{D}_{L}}{\dd{z}}
+    = \frac{1}{H(z)}
+\label{eq:2.8}
+\end{equation}
+
+The relationship between $\mu$ and $D_L$ is a bijection \cref{eq:1.14} so once the coupled system of ODEs is solved, a simple function can be used to calculate the distance modulus curves.

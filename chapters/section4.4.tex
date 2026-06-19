@@ -1,0 +1,30 @@
+\section{Credible regions from posteriors}
+\label{sec:4.4}
+
+Not all of the histograms from the Markov chains were reasonable approximations to the posterior PDFs for that model. I categorised all successful Markov chain histograms:
+\begin{equation*}
+    (\text{8 data sets})
+    \times
+    \left[
+        \binom{4}{2} 
+        +
+        \binom{4}{1}
+    \right] \text{models}\footnote{The zero-parameter model is $\Lambda$CDM.}
+    \times
+    (\text{6 step sizes})
+    =
+    8 \times (6+4) \times 6
+    =
+    480\ \text{histograms}.
+\end{equation*}
+as unsuitable (maximum step size either too small or too large) or suitable (satisfying all three criteria). I then selected the smoothest histograms (if there were multiple maximum step sizes which produced a good result) for further analysis. The next step in the analysis was the creation of credible regions for 1d and 2d subspaces of the 5d parameter space.
+
+\subsection{Credible regions for individual parameters}
+\label{sec:4.4.1}
+
+Although we desire a single estimate for each parameter, the posteriors are not delta functions, so there is an inherent width to the high-probability region whence the \lq\lq{}best fit\rq\rq{} estimate is selected. To examine the posterior PDFs in greater detail, I wrote the graphing program conf1. This read in the Markov chain data from a set of files and output line graphs of each posterior. The process involved binning the data, ordering the bins by population, then selecting those regions within which lay $68\%$, $95\%$ and $99\%$ of the points in the chain. These regions were plotted as line graphs shaded according to increasing probability content. The mode and standard deviation were also plotted as a point with errorbars above the curve. Thus I was able to facilitate comparison between the different data sets.
+
+\subsection{Credible regions for multiple parameters}
+\label{sec:4.4.2}
+
+Models with more than one free parameter can be examined in a similar manner to those with only a single free parameter. Although the theory is the same, the binning is based upon the values of all parameters simultaneously. Therefore I needed to write not only a program to generate contour maps of the credible regions (\texttt{conf2}) but also one to calculate them (\texttt{credibleregions}). Since the Metropolis- Hastings algorithm moves in all directions within the 2d parameter space, the value of both parameters is related. Unlike the existing \matlab{} function \texttt{histc}, which bins the parameter values in the random walk independently of one another, \texttt{credibleregions} bins the 2d subspace according to each pair of values. This retained any patterns in the walk, allowing me to look for correlations between parameters.

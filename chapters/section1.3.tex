@@ -1,0 +1,88 @@
+\section{Dark energy}
+\label{sec:1.3}
+
+In this thesis I will consider only two types of cosmological fluid: matter and dark energy. Matter (whether baryonic or dark) is represented as dust since it is considered pressureless and electrically neutral \cite{Barnes2005,Hobson2006,Linder1988a}. Dark energy is a hypothetical source of energy responsible for the observed acceleration of the universe \cite{LinderScherrer2009,Olive2010}. 
+There are three broad classes of models: quintessence, barotropic fluids and a cosmological constant. The distinguishing feature in all cases is its negative equation of state \cite{Olive2010}. This arises from the definition of dark energy as a repulsive fluid, so by definition its energy pressure satisfies $p < 0$ \cite{Barnes2005}. A physical interpretation of this is that it takes work to expand rather than compress the fluid \cite{Hobson2006}. It must obey causality so $0 < \left( \dd{p}/\dd{\rho} \right)^{2} < c^2$ \cite{LinderScherrer2009} but more precise properties are difficult to formulate because the existence of dark energy is an \textit{a priori} postulate required to explain observations rather than an \textit{a posteriori} corollary of physical theory.
+
+\subsection{The cosmological constant}
+\label{subsec:cosmological-constant}
+
+The cosmological constant was the first type of dark energy to be introduced, although it was not considered as a fluid at the time, but as a parameter in a generalisation of the curvature term \cite{Hobson2006}. Einstein admitted a modification in \cite{Einstein1917} to his original \cref{eq:1.1} by relaxing the assumption that the curvature term of the equation $\ten{g}_{\mu\nu}$ should contain only terms linear in second-order derivatives of the metric $\ten{g}_{\mu\nu}$ \cite{Hobson2006}. The two remaining requirements are that:
+\begin{enumerate}
+    \item $\ten{g}_{\mu\nu}$ should be constructable from properties of the local geometry, i.e. $\ten{g}_{\mu\nu}$ and $\ten{R}_{\mu\nu}$
+    \item Local energy conservation $\nabla_\mu \ten{T}_{\mu\nu} = 0$ necessitates that $\nabla_\mu \ten{g}_{\mu\nu} = 0$
+\end{enumerate}
+which are satisfied by any constant multiple of $\ten{g}_{\mu\nu}$ \cite{Hartle2003,Hobson2006}. Then the Einstein equation can be generalised to:
+
+% Equation (1.5)
+\begin{equation}
+\ten{G} 
+    \equiv \ten{R}_{\mu\nu} - \frac{1}{2} \ten{g}_{\mu\nu} R + \Lambda{} \ten{g}_{\mu\nu}
+    = \frac{8\pi{}G}{c^{4}} \ten{T}_{\mu\nu}
+\label{eq:1.5}
+\end{equation}
+where $\Lambda$ is a new universal constant\footnote{This was $\lambda$ in Einstein’s original paper \cite{Einstein1918}.} of nature known as the cosmological constant \cite{Hobson2006}. This allowed Einstein to develop static universes from the Friedmann equation, matching the predictions of relativity with the observational evidence\footnote{This also made his equations obey Mach’s principle: see \cite{Einstein1918} for a discussion.} of the time \cite{Einstein1917,Harrison1993}. Unfortunately, the condition which Einstein relaxed was the requirement that general relativity reduced to Newtonian gravity at small scales and in weak gravitational fields \cite{Hobson2006}. However, this can be rectified by re-interpreting the cosmological constant, moving it to the left hand side of the field equation. This is done by using an equivalent form of the original Einstein equation \cite{Einstein1917}:
+
+% Equation (1.6)
+\begin{equation}
+    \ten{R}_{\mu\nu} 
+    = -\frac{8\pi{}G}{c^{4}} \left( 
+        \ten{T}_{\mu\nu} - \frac{1}{2} T \ten{g}_{\mu\nu}
+    \right) 
+    + \Lambda{} \ten{g}_{\mu\nu}
+\label{eq:1.6}
+\end{equation}
+
+where $T$ is the scalar contraction of $\ten{T}_{\mu\nu}$ \cite{Hobson2006}. Rather than adding $\Lambda\ten{g}_{\mu\nu}$ to the left hand side, the equivalent is to add $\frac{8\pi{}G}{c^4} \Lambda \ten{g}_{\mu\nu}$ to the right hand side. 
+
+By comparison to the perfect fluid energy tensor (\cref{fig:stress-energy-perfect}) we see that this corresponds to a new kind of fluid with negative energy pressure which depends only on the metric, implying that it is a property of spacetime itself \cite{Hobson2006}. Therefore, the cosmological constant which was arbitrarily introduced as a curvature parameter now has a precise physical interpretation as an energy parameter: it fixes the value of the vacuum energy density. 
+
+Unfortunately from this interpretation arise two physical problems. Current quantum field theories also fix the vacuum energy density but they predict a value one hundred and twenty orders of magnitude greater than $\Lambda$ \cite{Barnes2005,Hobson2006,LinderScherrer2009}. This woeful discrepancy is known as the cosmological constant problem \cite{Barnes2005,Olive2010}. Furthermore it is a remarkable coincidence that at our epoch the energy densities of matter $\rho_m$ and the vacuum $\rho_\Lambda$ just happen to be of the same order of magnitude (the coincidence problem) \cite{Barnes2005,Olive2010}. This is remarkable because $\rho_X$ is composed entirely of fundamental constants (so does not vary in time), whereas $\rho_m$ must decrease over time as matter becomes more thinly distributed within the expanding universe. Attempts to solve these two problems led to the development of more general dark energies \cite{LinderScherrer2009}.
+
+\subsection{Quintessence models}
+\label{subsec:quintessence-models}
+
+The largest class of non-$\Lambda$ models for dark energy are collectively known as quintessence \cite{Olive2010}. The quintessence model is that of a scalar field $\phi$ which rolls down a quintessence potential $V(\phi)$ \cite{Barnes2005}. The pressure-density relation of the field is given by \cite{Olive2010}:
+
+% Equation (1.7)
+\begin{subequations} \label{eq:1.7}
+\begin{align}
+    \label{eq:quintessence-density} \rho &= \frac{1}{2} \dot{\phi}^{2} + V(\phi{}) \\
+    \label{eq:quintessence-pressure} p &= \frac{1}{2} \dot{\phi}^{2} - V(\phi{})
+\end{align}
+\end{subequations}
+
+where $\frac{1}{2} \phi^2$ is a kinetic term. Consequently $w = p/\rho$ is unlikely to be constant \cite{Olive2010} and $p$ may not even be a singly-valued function of $\rho$ \cite{LinderScherrer2009} which makes such quintessence models unable to be included in the Friedmann equations. This suggests that a key property of quintessence models---the canonically minimally-coupled scalar field $\phi$---may in some cases be an imperfect fluid \cite{LinderScherrer2009} thus violating our earlier assumption about the nature of cosmological fluids.
+
+\subsection{Barotropic fluids}
+\label{subsec:barotropic-fluids}
+
+Barotropic fluids are another large class of dark energies.  however unlike quintessence their properties depend solely on the equation of state $p = f(\rho)$ \cite{LinderScherrer2009}. Thus they are by definition perfect fluids and are readily included in the Friedmann equations. They differ from those quintessence models in which pressure is an explicit function of density because the sound speed in the fluid $|c_s| = |\dd{p}/\dd{\rho}|^{1/2}$ is no longer required to equal the speed of light. The exception to this is in the limit $p \rightarrow \rho \implies w \rightarrow -1$. This corresponds to a barotropic fluid or quintessence field whose behaviour tends toward that of a cosmological constant \cite{LinderScherrer2009}. Thus we may retain the defining behaviour of the cosmological constant without explicitly tying the dark energy model to a quantum vacuum energy, solving the cosmological constant problem. Indeed Linder and Scherrer suggest that the coincidence problem can also be reduced to two orders of magnitude by decomposing a more general barotropic fluid into a $\Lambda$-like fluid and an \lq\lq{}aether\rq\rq{} with variable behaviour \cite{LinderScherrer2009}. The intuitive simplicity of barotropic fluids compared to quintessence and the ease of obtaining the equation of state make these models an ideal candidate for this project.
+
+\subsection{Possible interaction}
+\label{subsec:possible-interaction}
+
+Due to the uncertain nature of dark energy, it is impossible to rule out the possibility that matter and dark energy may interact. If the fluid components do not interact, then they each obey the adiabatic equation \cref{eq:1.4b}. When interaction is present \cref{eq:1.4b} no longer holds separately for each fluid. Instead it is necessary to express \cref{eq:1.4b} in terms of its component fluids:
+
+% Equation (1.9)
+\begin{equation}
+    \dot{\rho}_{m} + \dot{\rho}_{X} 
+    = -3H \left[ 
+        \rho_{m} \left( 1 + w_{m} \right) + \rho_{X} \left( 1 + w_{X} \right)
+    \right]
+\label{eq:1.9}
+\end{equation}
+
+Separation of variables (in $\rho_M$ and $\rho_X$) requires the introduction of a separation constant $\gamma > 0$. There must be some mechanism which prevents the equations from describing an impossible physical situation (e.g., $\rho_X$ becoming negative, corresponding to a \lq\lq{}negative\rq\rq{} amount of dark energy). This problem is fixed by implicitly setting $\gamma$ as a multiple of $\rho_X$ \cref{eq:1.10}. Substituting the values of $w_i$ and $\gamma$ produces the (coupled) interacting adiabatic equations \cref{eq:1.10}:
+
+% Equation (1.10)
+\begin{subequations}\label{eq:1.10}
+\begin{align}
+    \dot{\rho}_{m} + 3H(z) \rho_{m} &= \gamma{}
+\label{eq:1.10a} \\
+    \dot{\rho}_{X} + 3H(z) \rho_{X} ( 1 + w_{X}(z) &= -\gamma{}
+\label{eq:1.10b}
+\end{align}
+\end{subequations}
+
+In conclusion, we shall take a phenomenological approach to dark energy: it is sufficient to assume the existence of cosmological fluids with negative energy pressure rather than to seek a physical cause for such a phenomenon.

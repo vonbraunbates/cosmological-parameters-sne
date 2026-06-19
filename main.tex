@@ -1,0 +1,131 @@
+\documentclass[final]{usydphysthesis}
+% \documentclass[draft]{usydphysthesis}
+
+% Figures directory
+\graphicspath{{figures/}}
+
+% Define new float enviornment
+\DeclareCaptionType{algorithm}[Algorithm][List of Algorithms]
+
+% biblatex loaded by cls file
+\addbibresource{main.bib}
+
+% Let tensors be math bold
+\let\ten\mathbf
+
+\NewDocumentCommand{\bao}{}{\textsc{bao}}
+\NewDocumentCommand{\cmb}{}{\textsc{cmb}}
+\NewDocumentCommand{\matlab}{}{\textsc{matlab}}
+\NewDocumentCommand{\mcmc}{}{\textsc{mcmc}}
+\NewDocumentCommand{\snap}{}{\textsc{snap}}
+
+% Shorthand for rho crit
+\NewDocumentCommand{\rhoc}{}
+{\ensuremath{
+    \rho_{\mathrm{crit}}
+}}
+
+% mathrm d for dx
+\NewDocumentCommand{\dd}{m}{
+    \mathop{}\!\mathrm{d}#1
+}
+
+% Shortcut for p(a) and p(A|B)
+\NewDocumentCommand{\prob}{m o}
+{\ensuremath{
+    \operatorname{p}
+    \IfValueTF{#2}
+      {
+        \!\left(
+          #1
+          \middle|
+          #2
+        \right)
+      }
+      {
+        \!\left(
+          #1
+        \right)
+      }
+}}
+
+% Automatic figure labels
+\ExplSyntaxOn
+\NewDocumentCommand{\staticfigure}{ O{\textwidth} m m }{%
+  \par\noindent
+  \centering
+  \setlength{\fboxsep}{0pt}%
+  % \fbox{
+  \includegraphics[width=#1]{#2}
+  % }%
+  \captionof{figure}{#3}%
+  \__fvbb_label_from_filename:n {#2}%
+  \par
+}
+
+% For use in subfigures
+\NewDocumentCommand{\staticsubfigure}{ O{0.48\textwidth} m m }{%
+  \begin{subfigure}[t]{#1}
+    \centering
+    \includegraphics[width=\linewidth]{#2}
+    \caption{#3}
+    \__fvbb_label_from_filename:n {#2}
+  \end{subfigure}%
+}
+
+% Get lbel from file basename
+\cs_new_protected:Npn \__fvbb_label_from_filename:n #1
+  {
+    % strip path
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \regex_replace_once:nnN {^.*/} {} \l_tmpa_tl
+    % strip extension
+    \regex_replace_once:nnN {\.[^.]+$} {} \l_tmpa_tl
+    % create label
+    \label{fig:\tl_use:N \l_tmpa_tl}
+}
+\ExplSyntaxOff
+  
+% Maketitle
+\title{Bayesian Analysis of Type Ia Supernovae as Dark Energy Probes}
+\subtitle{} % optional
+
+\author{Francesca von Braun-Bates}
+
+\thesistype{A thesis}
+\degree{Bachelor of Science (Honours)}
+\department{School of Physics}
+\university{The University of Sydney}
+\date{December 2010}
+
+% ------------------------------------------------------
+
+\begin{document}
+\frontmatter
+
+\maketitle
+
+\input{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+\include{chapters/chapter6}
+
+\appendix
+
+\input{appendices/appendixA}
+\input{appendices/appendixB}
+\input{appendices/appendixC}
+
+\printbibliography
+
+\end{document}
