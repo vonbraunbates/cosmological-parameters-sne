@@ -1,4 +1,6 @@
 # cosmological-parameters-sne
+[![DOI](https://zenodo.org/badge/1274403581.svg)](https://doi.org/10.5281/zenodo.20764401)
+
 Cosmological parameter estimation using Type Ia SNe as standard candles
 
 Title: Bayesian inference of cosmological parameters from Type Ia supernovae
@@ -54,6 +56,8 @@ Please cite the following thesis.  If you are using `biblatex` use the `thesis` 
   institution = {University of Sydney},
   year        = {2010},
   month       = dec,
+  doi         = {10.5281/zenodo.1234567},
+  url         = {https://doi.org/10.5281/zenodo.1234567},
   note        = {Reconstructed edition available from GitHub}
 }
 ```
