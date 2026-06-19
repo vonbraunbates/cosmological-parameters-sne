@@ -1,0 +1,79 @@
+% chapters/intro.tex
+\chapter{Introduction}
+\label{ch:introduction}
+
+% ---------- Chapter 1: Introduction ----------
+
+\begin{figure}
+\centering
+
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \includegraphics[width=.8\textwidth]{figures/chapter1/fig1.1}
+  \caption{The general stress-energy tensor.}
+  \label{fig:stress-energy-general}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+  \centering
+  \[
+  \begin{pmatrix}
+    c^{2} \rho{} & 0 & 0 & 0 \\
+    0 & p & 0 & 0 \\  
+    0 & 0 & p & 0\\
+    0 & 0 & 0 & p
+  \end{pmatrix}
+  \]
+  \caption{Perfect fluid case.}
+  \label{fig:stress-energy-perfect}
+\end{subfigure}
+\caption{The stress-energy-momentum tensor for the general case and a perfect fluid.}
+\label{fig:1.1}
+\end{figure}
+
+\begin{figure}
+\centering
+    \staticfigure[0.75\textwidth]{figures/chapter1/fig1.2.png}{SNe classes based on spectroscopy, with well-known examples of each class. Type Ia are thought to be the result of thermonuclear explosions, whereas all other types are caused by core collapse in massive stars. Type IIb are a crossover class, initially appearing as Type II but evolving into Type Ib/c. Image credit: Fig. 1 in \cite{Leibundgut2008}.}
+\end{figure}
+
+\begin{figure}
+\centering
+    \staticfigure[0.75\textwidth]{figures/chapter1/figure1.3.jpeg}{Type Ia SNe formation. This shows a singly-degenerate supernova, in which the white dwarf accretes matter from a companion star. The dwarf eventually reaches the Chandrasekhar limit, at which point its mass is too great for the dwarf to remain stable and it implodes.  Image credit: Fig. 10 of \cite{Matteucci2008}.}
+\end{figure}
+
+% CHAPTER TEXT  ----------------------------------------
+
+Dark energy is one of the most important and least understood components of the universe. Its first introduction was the inclusion of the cosmological constant in Einstein’s equation of general relativity. Ironically, astronomical observations which indicated an expanding universe caused firstly the removal of the constant \cite{Harrison1993} and then its reintroduction \cite{Hobson2006}. Re-interpretation of the cosmological constant as a form of energy (rather than an independent scalar parameter) lead to the proposal of a broader class of ”anti-gravity fluids” which are now known as dark energy \cite{Hobson2006}. Attempts to differentiate between competing dark energy models have lead cosmologists to widen their search for evidence of expansion: the first hint of dark energy came from studies of Type Ia supernovae \cite{Leibundgut2008} but now studies (e.g. \cite{Amanullah2010,LewisBridle2002}) combine data from a variety of sources including supernovae \cite{Hicken2009,Riess2007,Kowalski2008}, the cosmic microwave background (\cmb{}), \cite{LewisBridle2002} and baryon acoustic oscillations (BAO) \cite{Komatsu2010}. 
+
+This thesis aims to use Bayesian analysis to investigate the usefulness of Type Ia supernovae as dark energy probes. Markov Chain Monte Carlo methods are applied to determine constraints from Ia SNe on four cosmological parameters: the fractional density of matter, the (two-parameter) dark energy equation of state and the interaction constant. (The Hubble constant is included as an additional free parameter.) The data sets used in the \mcmc{} method come from three sources: observational data calibrated and processed by supernova survey groups, the same data sets with reduced errors (to investigate how uncertainties in the cosmological parameters scale with uncertainties in the observational data) and two projected sets based upon a recently-proposed, space-based survey. There is ample scope for further work in observational, computational and theoretical areas, a brief discussion of which concludes the thesis.
+
+\section{Cosmological background}
+\label{sec:cosmological-background}
+
+The framework of modern cosmology depends upon the cosmological principle. The is an indemonstrable assumption that at a given time the universe is, apart from local irregularities, the same at all points in space. We can only prove directly that the universe is isotropic about our location. Therefore, rather than proving that the universe is isotropic and homogeneous everywhere, we must show that homogeneity is likely by demonstrating the gross improbability of a ”preferred location” which alone is isotropic \cite{Harrison1993}. Once homogeneity is established, the cosmological principle follows directly: the universe is everywhere (and everywhen) homogeneous and isotropic. Only once we have made this assumption can we propose that the laws of physics are the same at all times and places. We can now use the entire observable universe as a laboratory: if a theory can be proven false by a distant event, then it must also be false everywhere else.\footnote{This does not discard the usefulness of a failed theory as an approximation is some cases e.g. Newtonian gravity.} Conversely we can also apply physical laws to any point in the Universe. The assumption of the cosmological principle permits the application of physics on the largest scales\footnote{\cite{Hartle2003} quantifies large scale as more than hundreds of Mpc.} provided that we impose homogeneity and isotropy on the universe.
+
+\input{chapters/section1.2}
+
+\input{chapters/section1.3}
+
+\input{chapters/section1.4}
+
+\section{Thesis overview}
+\label{sec:thesis-overview}
+
+The evolution of the universe is completely dependent on its large-scale constituents. Consequently close examination of the parameters quantifying these cosmological fluids provides valuable insight into the topology, evolution and possible fate of the universe. The near-exponential growth in SNe data over the past decade \cite{Lidman2010b} has led to large SNe studies using their own data sets to impose bounds on the mass density $\rho_M$ and dark energy equation of state $w$ (e.g. \cite{Hicken2009,Riess2007,Amanullah2010,Kowalski2008}). Meanwhile computational cosmologists \cite{LewisBridle2002} have shown that Markov Chain Monte Carlo methods (\mcmc{}) are a useful tool in imposing bounds on a far large number of parameters (6-11) using data from multiple sources. 
+
+This thesis aims to combine both of these approaches. Retaining the use of \mcmc{} to deter- mine plausible priors for Bayesian analysis, I will use a variety of SNe data rather than focusing on \cmb{} which has been extensively performed (e.g. \cite{LewisBridle2002}). The 5-dimensional parameter space for the \mcmc{} random walk results from the interacting, non-linear dark energy parametrisation \cref{eq:1.10} in the Friedmann equations \cref{eq:1.4} and the inclusion of the Hubble factor $h$ as a parameter to account for different choices of $H_0$ made by different SNe survey teams. The differs markedly from the SNe studies \cite{Hicken2009,Kowalski2008,Riess2007} which use a 2-parameter space (matter density and constant dark energy equation of state) and marginalise over $H_0$ as a nuisance parameter. The data itself will be a mixture of observed data, false sets based on that data and a mock future SNe survey based on the capabilities of the upcoming Supernova Acceleration Probe (\snap{}, now \textsc{wfirst}).
+
+The outline of the thesis is as follows:
+\begin{enumerate}
+    \item Introduction to Bayesian parameter estimation, including relating parameter estimation to the solution of an integral equation.
+    \item Reformulation of the Friedmann equations for numerical use.
+    \item Appropriate choice of observational data sets and projected set creation using the Friedmann equa- tion solver.
+    \item Construction of MATLAB code to numerically integrate the Friedmann equations, generate distance moduli from them and compare them to SNe data using \mcmc{}.
+    \item Application of the Markov Chain Monte Carlo method to the data, including a discussion of the problems involved in Markov chain convergence.
+    \item Analysis of the $1$, $2$ and $3\sigma$ regions within the parameter space for each of the parameters, both with single-parameter and double parameter models.
+    \item A brief outline of further work and improvements to the techniques used in the project. 
+    \item Conclusions.
+    \item Appendices: 1) enlarged one-dimensional posteriors; 2) Plots of distance modulus curves for the different models and data sets; 3) discussion of the importance of light curve fitters for extracting precise values of the cosmological parameters.
+\end{enumerate}

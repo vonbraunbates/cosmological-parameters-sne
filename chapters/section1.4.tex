@@ -1,0 +1,109 @@
+\section{Observations}
+\label{sec:1.4}
+
+
+
+It remains to link the theoretically derived Friedmann universes with an observable quantity which can be used to distinguish between them. Unfortunately the cosmological parameters are not directly observable \cite{Harrison1993}, so the traditional method of determination is to measure accurately a dependent astrophysical quantity over a large span of redshift \cite{Linder1988a}. In this thesis, I aim to use Type Ia supernovae as standard candles to measure the luminosity-distance-redshift relation in order to determine the values of the cosmological parameters in our universe.
+
+\subsection{Redshift-distance relations}
+\label{subsec:redshift-distance-relations}
+
+Redshift $z$ is classically defined as the fractional change between observed $(t = 0)$ and emitted wavelength (or frequency) of light\footnote{\lq\lq{}Light\rq\rq{} refers to all electromagnetic radiation, not just the visible spectrum.} due to motion of the source \cite{Silk1989}. A relativistic treatment of redshift (in which relative velocity between points on a manifold is not well-defined \cite{Carroll2007,doCarmo1992}) suggests the cause to be a change in metric between source and observer \cite{Carroll2007}. 
+
+Correspondingly, we see that the classical interpretation (the Doppler shift) is only one of three possible interpretations: gravitational, Doppler and cosmological \cite{Harrison1993,Hobson2006}. Gravitational redshift due to the distortion of spacetime by the presence of mass or energy is only of importance near very dense objects (e.g. black hole binaries) or when objects are observed to be gravitationally lensed, so this effect can be neglected in most cases \cite{Harrison1993,Silk1989}. For objects at a sufficient distance, Doppler (proper-motion-induced) redshift can be safely neglected because its contribution is dominated by the cosmological redshift \cite{Silk1989}. The cosmological redshift is the contribu- tion due to universal expansion, so the wavelength $\Lambda$ and scale factor $a(t)$ behave equivalently \cite{Harrison1993}:
+
+% Equation (1.11)
+\begin{equation}
+    z \equiv \frac{ \lambda{}(t_0) - \lambda{}(t)}{\lambda{}(t)}
+    = \frac{a(t_0) - a(t)}{a(t)}
+\label{eq:1.11}
+\end{equation}
+
+It is possible to define a variety of distance measures (see \cite{Hogg2000} for a summary) and determine them as a function of $z$, leading to a redshift-distance relation \cite{Linder1988a}. An unfortunate fact pointed out by Linder (who did most of the early work on such cosmological tests) is that the three ”most common and physically intuitive” distance-redshift relations are bijective functions of each other and so provide only a single test \cite{Linder1988a}. Of these three --- angular distance, proper motion distance and luminosity distance --- the latter is the simplest to study due to an abundance of data. 
+The luminosity distance $D_L$ is defined as a flux-luminosity ratio:
+
+% Equation (1.12)
+\begin{equation}
+D_{L} \equiv \sqrt{\frac{L}{4\pi{}S}}
+\label{eq:1.12}
+\end{equation}
+
+where $L$ is the bolometric\footnote{This refers to a quantity measured over all wavelengths. A bolometer is a hypothetical device capable of doing so.} luminosity and $S$ is bolometric flux \cite{Hogg2000}. Directly related to $D_L$ is the distance modulus $\mu$. This is defined (1.13) to be the magnitude difference between an object’s observed
+
+% Equation (1.13)
+\begin{equation}
+    \mu{}(z) \equiv 5 \log{} \frac{D_{L}}{10\,\text{kpc}}
+    = m(z) - M
+\label{eq:1.13}
+\end{equation}
+
+In practice a variety of effects complicates calculation of apparent magnitude $m(z)$ so the second equality no longer holds \cite{Linder1988a} (although this equality, rather than $D_L$ is frequently used to define $\mu$ in introductory textbooks, e.g. \cite{Silk1989}). The apparent magnitude is a logarithmic measure of the brightness of an object so it depends upon:
+
+\begin{enumerate}
+\item $M$ (absolute magnitude) the object’s brightness if it were 10pc distant
+\item $h(z)$ (Hubble parameter): $H_0 / (100 \mathrm{km}\,\mathrm{s}^{-1} \,\mathrm{Mpc}^{-1})$, a measure of cosmological expansion for which best current estimates \cite{Riess2009} are $H_0 = 74.2 \pm 3.6 \,\mathrm{km}\,\mathrm{s}^{-1} \,\mathrm{Mpc}^{-1}$
+\item $\kappa(z)$ (k-correction): adjustment for measuring $m$ and $M$ at different wavelengths
+\item $A(z)$ (absorption): adjustment for the absorption of light by the interstellar medium
+\end{enumerate}
+
+Adding a constant to account for the conversion to non-geometerised units, we arrive at a practical expression for the distance modulus \cref{eq:1.14}: \cite{Linder1988a}
+
+% Equation (1.14)
+\begin{equation}
+m(z) - M = -5 \log{} h + 42.38 + \kappa{}(z) + A(z) + 5 \log{} D_{L}(z)
+\label{eq:1.14}
+\end{equation}
+
+The absolute magnitude is directly related to the luminosity of the object via the inverse square law \cite{Harrison1993,Hogg2000}: in particular we can calculate $M$ for a large set of objects known as standard candles (\cref{subsec:supernovae-standard-candles}). The Hubble constant $H_0$ can only be estimated, although uncertainty in its value is rapidly declining \cite{Harrison1993}, and tight restrictions on $H_0$ are now provided by the Hubble Key Project \cite{LewisBridle2002}. The last two parameters depend upon the instrument used to collect observational data and the light curve fittings used by a particular study \cite{Hicken2009}. The equation is then rearranged to find the distance modulus \cref{eq:1.14}.
+
+\subsection{Supernovae as standard candles}
+\label{subsec:supernovae-standard-candles}
+
+Standard candles allow the uncertainty in determining astronomical distances to be reduced \cite{Harrison1993}. Distance measurement on galactic and extragalactic scales is highly non-trivial, so astronomers look for objects which (empirically) have an analytically calculable luminosity (hence absolute magnitude) \cite{Silk1989}. Only Type Ia and sometimes Type II SNe are regarded as standard candles \cite{Leibundgut2008}. 
+
+Supernova classification is decided by the presence or absence of H, Si, Na and O absorption lines in their spectra as detailed in \cref{fig:fig1.2} \cite{Leibundgut2008}. In particular, Type Ia SNe lack H and He absorption lines but show Si lines \cite{Lidman2010b}. This indicates that Ia SNe must be the end product of a stellar remnant (after all non-metals have been fused), whereas Type Ib/c and Type II SNe occur as the end of stellar core collapse \cite{Leibundgut2008}. The commonly agreed physical interpretation of such spectra is that Type Ia SNe are the thermodynamic explosion of white dwarves \cite{Lidman2010b,Leibundgut2008,Mazzali2007}. A white dwarf is the C-O core remaining after a small star $\left( \lesssim 8 M_{\odot} \right)$ is unable to continue fusion. If the white dwarf has a companion star, eventually the mass accreted from the companion will overwhelm the pressure from degenerate electrons keeping the white dwarf stable as shown in \cref{fig:figure1.3}. The resulting deflagration forms a Ia SN and a supernova remnant \cite{Lidman2010b}. The specific nature of the Type Ia SN strongly indicates that it is a standard candle: its peak luminosity is independent of the surrounding conditions because it depends on the white dwarf reaching a fixed mass limit \cite{Mazzali2007}. Large-scale studies such as \cite{Guy2007} have released a common spectral evolution for SNe Ia and \cite{Mazzali2007} support this by proposing a common physical mechanism explaining the small dispersion in spectra. In particular, there is currently no evidence that Ia SN evolve with redshift \cite{Linder1988b}. Despite this, a number of studies summarised in \cite{Lidman2010b} suggest that the standard candle model for calculating M is only partially correct and that additional parameters need to be added. The general consensus is that more high-z data is required for any conclusive evidence \cite{Lidman2010b,Linder2009,Mazzali2007}. Thus we retain the assumption of \cite{Hicken2009} that Type Ia SNe are excellent standard candles with small uncertainty in absolute magnitude.
+
+\subsection{Relation of observables to parameters}
+\label{subsec:observables-to-parameters}
+
+The cosmological parameters appear in $D_L$ via the comoving distance $D_C$. The luminosity distance is not a physical distance: from its definition we see that it is a quantity which can be interpreted as a distance using the inverse square law \cite{Hogg2000}. The physical distance between objects is the line of sight comoving distance, from which all other distance measures are derived\cite{Hogg2000}. $D_C$ represents the distance measured now (at $z = 0$) locally (in our cosmological reference frame) between two events, if both were in the Hubble flow (sufficiently distant that universal expansion is large enough to dominate peculiar motion), so it depends only on redshift and cosmological parameters\cite{Hogg2000}. The luminosity distance is related to this:
+
+% Equation (1.15)
+\begin{equation}
+    D_{L}
+    = (1+z) D_{C} 
+    = a_{0} (1 + z) S \left( \chi{}(z) \right)
+    \quad\text{where }
+    S(\chi) = 
+    \begin{Bmatrix}
+    \sin^{2}\!x \\
+    x \\
+    \sinh^{2}\!x
+    \end{Bmatrix}
+    \,\text{for } k =
+    \begin{cases}
+    +1 \\
+    \;\;\;0 \\
+    -1
+    \end{cases}
+\label{eq:1.15}
+\end{equation}
+
+where, using $\rhoc{} = \frac{3H^2(z)}{8\pi{}G}$
+
+% Equation (1.16)
+\begin{equation}
+     \chi{} (z)
+     = \frac{c}{a_{0} H_{0}}
+     \left\{ \int_{0}^{z} \dd{z}^{\prime}
+        \left[ 
+            \frac{\rho_{k}}{\rho_{\mathrm{crit}}} \left( 1 + z^{\prime} \right)^{2}
+            + \frac{\rho_{m}}{\rho_{\mathrm{crit}}} \left( 1 + z^{\prime} \right)^{3}
+            + \sum_{i} \frac{\rho_{i}}{\rho_{\mathrm{crit}}} 
+            \left( 1 + z^{\prime} \right)^{3(1+w_i)}
+        \right]^{-\frac{1}{2}}
+     \right\}
+\label{eq:1.16}
+\end{equation}
+
+We now have an indirect mechanism for finding the set of cosmological parameters ($\rho_M$ , $\rho_{\Lambda}$ , $w_{\Lambda}$ , $\gamma$, $H_0$ ) which agree with supernovae observations by comparing distance modulus from various Friedmann universes with that from observational data.
