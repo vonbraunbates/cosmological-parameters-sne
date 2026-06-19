@@ -52,24 +52,21 @@
 % Automatic figure labels
 \ExplSyntaxOn
 \NewDocumentCommand{\staticfigure}{ O{\textwidth} m m }{%
-  \par\noindent
-  \centering
-  \setlength{\fboxsep}{0pt}%
-  % \fbox{
-  \includegraphics[width=#1]{#2}
-  % }%
-  \captionof{figure}{#3}%
-  \__fvbb_label_from_filename:n {#2}%
-  \par
+  \begin{center}
+    \includegraphics[width=#1]{#2}
+    \captionof{figure}{#3}%
+    \__fvbb_label_from_filename:n {#2}%
+  \end{center}
 }
 
 % For use in subfigures
 \NewDocumentCommand{\staticsubfigure}{ O{0.48\textwidth} m m }{%
   \begin{subfigure}[t]{#1}
-    \centering
+  \begin{center}
     \includegraphics[width=\linewidth]{#2}
     \caption{#3}
     \__fvbb_label_from_filename:n {#2}
+  \end{center}
   \end{subfigure}%
 }
 
