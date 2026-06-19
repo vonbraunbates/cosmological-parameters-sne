@@ -1,0 +1,116 @@
+% chapters/appendixC.tex
+\chapter{Are Type Ia SNe standard candles?}
+\label{app:type-ia-standard-candles}
+
+% ---------- Appendix C ----------
+
+\input{tables/table_C.1}
+
+\begin{figure}
+    \centering
+\staticfigure
+    {figures/appendixC/figC.1.png}
+    {Sample light curves for SNe, showing the relationship between various key parameters in the light-curve fitting equations. Image credit: Slide from \cite{Lidman2010b}.}
+\end{figure}
+
+\begin{figure}
+\staticfigure
+    {figures/appendixC/figC.2.png}
+    {Comparison of the credible regions in two-parameter cosmological models using the SALT and MLCS2k2 light-curve fitters. ``Union+CfA3'' refers to the Constitution set. ``Old'' refers to the Essence set, which has better systematics and is roughly equivalent to the Union set without approximately 100 high-$z$ SNe. Image credit: Fig.~4 in \cite{Hicken2009}.}
+\end{figure}
+
+\begin{figure}
+\staticfigure
+    {figures/appendixC/figC.3.png}
+    {Dependence of SN brightness on the star formation rate of the host galaxy. Galaxies contain SNe with greater brightness contribution from the colour parameter if they have low star-formation rates. Image credit: Slide 37 from \cite{Lidman2010b}.}
+\end{figure}
+
+\begin{figure}
+\staticfigure
+    {figures/appendixC/figC.4.png}
+    {Dependence of SN brightness on the metallicity of the host galaxy. Metal-rich galaxies contain brighter SNe at peak brightness in the B-band than metal-poor galaxies. Image credit: Slide 40 from \cite{Lidman2010b}.}
+\end{figure}
+
+\begin{figure}
+\staticfigure
+    {figures/appendixC/figC.5.png}
+    {Dependence of the deviation from the mean peak absolute magnitude at different observing wavelengths. The H-band in the infrared has the smallest range within the SNe sample. Image credit: Slide 47 from \cite{Lidman2010b}.}
+\end{figure}
+
+The dependence of cosmological parameter estimation on the methods used to reduce Type Ia SNe to standard candles becomes increasingly important as the global set of SNe data expands. This chapter outlines the data processing and calibration undertaken by the SNe survey teams, with particular emphasis on the light curve fitting techniques used and how the field has improved since the release of each data set.
+
+\section{Supernova photometry}
+\label{sec:C.1}
+
+Typical processes for supernova data collection are given in \cite{Kowalski2008,Hicken2009,Guy2005,Rubin2008}. 
+Large-scale surveys use wide-field ($\sim 1$ square degree) CCD cameras to collect repeated images of (preferably low-extinction) fields of the sky over several months \cite{Riess2007}. Camera filters at different wavelength ranges (detailed in \cref{tab:C.1}) allow multi-colour light curves to be found for SN near \lq\lq{}maximum light\rq\rq{} (i.e. the SN at peak brightness), which are required for photometric calibration \cite{Lidman2010b}. 
+The data are sent through two or more computer pipelines which subtract the new images from (older) reference images, removing the background \cite{Guy2010}. 
+This leaves only the changes between the two images, enabling the generation of lists of possible SN candidates (since SN are by definition transient objects) \cite{Leibundgut2008}. The candidates are checked against a database of existing variable objects (e.g. variable starts, active galactic nuclei) and visually inspected to select the SN \cite{Guy2010}. 
+Spectroscopic follow-up is allows the classification of the SN into different types shown in \cref{fig:fig1.2} and identification of their redshifts using a computer algorithm \cite{Riess2007}. Only once accurate photometry and secure classification are achieved can the Type Ia SNe be used as distance indicators \cite{Leibundgut2009}.
+
+The practical relation between SNe observables and luminosity distance is \cref{eq:1.14}:
+
+\begin{equation}
+    m(z) - M
+    = 5 \log h + 42.38 + \kappa(z) + A(z) + 5 \log D_{L}(z)
+\label{eq:sn-distance-modulus}
+\end{equation}
+
+so the distance $D_L$ can only be found after the peak apparent magnitude $m(z)$ is known from observations, corrections are made for the absorption factor $A(z)$ and the $k$-correction $\kappa(z)$ and the peak absolute magnitude $M$ is found from the light curve fitters. 
+The first step in this process is $k$-correction: adjusting for the fact that the data at different redshifts is compared to standards at different rest-frame wavelengths \cite{Hogg2002}. 
+Absorption of the light by the interstellar medium and correction for time dilation are made using an empirical formula for $A(z)$ \cite{Blondin2008}. Part of this correction is related to extinction: the decrease in brightness (hence increase in magnitude) due to reddening and absorption of light by the interstellar medium \cite{Hogg2002}. 
+The next stage in the process is the use of a photometric light curve fitter to estimate the peak absolute magnitude of the Ia SNe from the properties of the light curve and the apparent magnitude \cite{Lidman2010b}. The light curves obey a \lq\lq{}bluer-broader-brighter\rq\rq{} relation \cref{fig:figC.1} by which the spread in their intrinsic luminosities is reduced \cite{Hicken2009}. The empirical relation which is used to relate these parameters to the apparent magnitude is called a light-curve fitter \cite{Guy2005}. A number of different fitters have been developed, but the important ones are those used to reduce the Gold sample — MCLS2k2 — and the Union sample — SALT. Both of these fitters are used on the Constitution set.
+
+\section{The SALT Fitter}
+\label{sec:C.2}
+
+The Spectral Adaptive Light Curve Template SALT is a phenomenological model for determining Ia SN light curves \cite{Guy2005}. The model was constructed from a minimal set of parameters: stretch $s$, colour $c$, and rest-frame peak magnitude in the B-band $m_{B}^{\mathrm{max}}$ (from the flux normalisation).\footnote{An additional parameter, the time of maximum light in the B-band $t$, turns out to be a nuisance parameter when the program is used for cosmological fits \cite{Guy2005}.} These parameters are inserted into the model with coefficients $\alpha$ and $\beta$:
+
+\begin{equation}
+    \mu_{B}
+    = m_{B}^{\mathrm{max}} - M_{B}
+    + \alpha(s-1)
+    - \beta c
+\label{eq:salt-distance-modulus}
+\end{equation}
+
+where $\mu_B$ is the desired distance modulus and $M$ is the absolute magnitude \cite{Hicken2009}. The coefficient values are determined by training the fitter using existing data and an iterative algorithm \cite{Guy2005}:
+
+\begin{itemize}
+    \item Start with a correction function $K = 0$
+    \item Fit light curves from the data using the current K.
+    \item Find the light curve residuals and propose an additional adjustment $\delta{}K$ accordingly.
+    \item Update: $K \rightarrow{} K + \delta{}K$
+    \item Finish when $\delta{}K$ becomes negligible.
+\end{itemize}
+
+Therefore before the fitter is used, one requires an existing set of nearby and distant SNe to be used for training and a second set which acts as a test sample for consistency checks \cite{Guy2005}. Once the coefficients are determined and verified, the template fitter can be used to determine distances. Unlike the MCLS2k2 fitter, the SALT fitter accounts for the k-correction and absorption within the fitter, so the data does not need to be adjusted before fitting. This illustrates a potential weakness of the SALT method: the intrinsic colour of the light curve is not distinguished from the host reddening due to redshift and the local environment of the SNe \cite{Hicken2009}. Therefore both low-z and high-z SNe must have the same combined (host+intrinsic) colour-magnitude relations. Since the treatment of host reddening is the largest contributor to systematic uncertainties in the luminosity distance-redshift relation (therefore also in the cosmological parameter estimation), this effectively signs the death warrant for the use of SALT on future surveys \cite{Leibundgut2008}.
+
+\section{The MLCS2k2 Fitter}
+\label{sec:C.3}
+
+The updated Multicolour Light Curve Shape method MCLS2k2 is a template-based method similar to SALT \cite{Jha2007}. Different parameters are employed: a shape/luminosity parameter $\Delta{}$, host-galaxy extinction $A_V$ , a reddening parameter $R_V$ and the time of maximum light in the B-band $t$ \cite{Jha2007}. 
+Consequently, explicit estimates of the host reddening contribution to the light curve can be made by determining $A_V$ from a prior on the difference in extinction at the $B$ and $V$ wavelengths and a chosen value for $R_V$. This is a key difference between the MCLS2k2 and the SALT method \cite{Hicken2009}. 
+Like SALT, this method also employs a training algorithm and consistency checks using a test set of SNe. The particular weakness of this fitter is the uncertain value for the constant $R_V$: the developers of this technique suggest $R_V = 2.7$ but admit that the constraints that can be placed on this parameter from optical observations are weak. 
+In order to test the sensitivity of the cosmological parameter estimates to the value of $R_V$, \cite{Hicken2009} used the MCLS2k2 fitter with two values: 1.7 and 3.1 and found that the larger value underestimates the distance modulus (by over-correcting for extinction) however the smaller value produces plausible results. Riess et al. used $R_V$ = 1.7 to calibrate the Gold set \cite{Riess2007}.
+
+\section{Are the fitting parameters universal?}
+\label{sec:C.4}
+
+The three fitting coefficients $\alpha$, $\beta$ and MB for SALT and their relations in MCLS2k2 may be constant for all Ia SNe or they may change with redshift \cite{Lidman2010b}. 
+Of particular concern are evolutionary trends and population differences: this reduces the homogeneity of the survey samples and increases the complexity of the light curve fitters \cite{Lidman2010b}. For example \cite{Lampeitl2010} find that \lq\lq{}passive\rq\rq{} galaxies with low star formation rates contain Ia SNe which are $0.1 - 0.04$ magnitudes brighter ($2\sigma$ or 95\%CL) at maximum light than their counterparts in host galaxies undergoing active star formation \cref{fig:figC.3}. 
+This is due to a different best-fit gradient for the colour parameter $c$, i.e. $\beta$ depends on the star-formation rate of the host galaxy \cite{Lidman2010b}. They suggest a correction parameter based upon the mass of the host galaxy \cite{Lampeitl2010}. 
+Moreover, the SNe in star-forming galaxies are best fit to the MCLS2k2 fitter with $R_V \sim 2$ whereas those in passive galaxies are better fit with $R_V \sim 1$ \cite{Lampeitl2010}. 
+This poses a particular weakness of the MCLS2k2 fitter when used for cosmological surveys, as only one value of $R_V$ can be used across the entire data set \cite{Hicken2009}.
+
+The absolute magnitude at peak brightness in the B-band, $M_B$ depends on the metallicity of the host galaxy \cref{fig:figC.4}. Nearby SNe are located in metal-rich galaxies, while high-$z$ SNe are in metal-poor galaxies, as these have had fewer cycles of star formation releasing metals into the interstellar medium. Thus we can conclude that $M_B$ is not a universal parameter, but is redshift-dependant \cite{Lidman2010b}. 
+There is currently no evidence that the stretch coefficient $\alpha$ is environment-dependant \cite{Linder2009}. 
+Therefore, while we conclude that $\alpha$ is a universal parameter, $\beta$ and $M_B$ are not. This is problematic for SNe surveys wishing to reduce large numbers of SNe with the same light curve fitter unless more complex fitters are introduced which account for these dependencies.
+
+\section{Future developments}
+\label{sec:C.5}
+
+The key to improvements in the light-curve fitters is increased understanding of both the physical mechanisms of Type Ia SNe and the morphology of their environment \cite{Leibundgut2008}. A possible resolution to the scattering in MB is to measure the light curves in the infra-red \cite{Leibundgut2008} where the deviation from the mean is reduced \cref{fig:figC.5}. Recent research by \cite{Maeda2010} suggests that asymmetry in the thermonuclear explosion mechanism which causes a Type Ia SNe may account for the spectral diversity, however the computation requirements for the modelling are intensive and following up their results is a non-trivial task. 
+
+The cosmological parameter estimates from the three SNe survey groups \cref{tab:5.2} show that the statistical uncertainties have reached the level of systematic uncertainties, so simply increasing the sample size of the SNe sets will not improve on the parameter constraints. Instead progress must be made on more detailed understanding of the various astrophysical effects which cause Type Ia SNe to deviate from the behaviour of perfect standard candles \cite{Leibundgut2008}. 
+The physical nature of the light curve shape is crucial to the extraction of accurate distance modulus data from the observations. Accordingly, our knowledge of the intrinsic colour variations in Type Ia SNe, the influence of dust absorption in the intervening interstellar medium, demographic shifts according to the host galaxy properties and evolutionary trends as a function of redshift must be improved if we are to make further progress at estimating the cosmological parameters.
