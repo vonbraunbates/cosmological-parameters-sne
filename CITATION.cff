@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 
-title: "Reconstruction of Honours Thesis: Cosmological Constraints from Type Ia Supernovae"
+title: "Bayesian inference of cosmological parameters from Type Ia supernovae"
 
 message: >
   If you use this repository, please cite the reconstructed thesis.
@@ -13,8 +13,9 @@ license: CC-BY-4.0
 
 preferred-citation:
   type: report
-  title: "Cosmological Constraints from Type Ia Supernovae"
+  title: "Bayesian inference of cosmological parameters from Type Ia supernovae"
   authors:
     - family-names: Von Braun-Bates
       given-names: Francesca
   year: 2010
+  institution: University of Sydney
