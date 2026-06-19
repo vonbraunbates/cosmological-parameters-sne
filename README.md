@@ -56,8 +56,8 @@ Please cite the following thesis.  If you are using `biblatex` use the `thesis` 
   institution = {University of Sydney},
   year        = {2010},
   month       = dec,
-  doi         = {10.5281/zenodo.1234567},
-  url         = {https://doi.org/10.5281/zenodo.1234567},
+  doi         = {10.5281/zenodo.20764402},
+  url         = {https://doi.org/10.5281/zenodo.20764401},
   note        = {Reconstructed edition available from GitHub}
 }
 ```
